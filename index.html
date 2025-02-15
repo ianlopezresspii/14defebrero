@@ -15,8 +15,8 @@
             overflow-x: hidden;
         }
         .container {
-            padding: 20px;
-            background: rgba(255, 182, 193, 0.95);
+            padding: 30px;
+            background: rgba(255, 182, 193, 0.9);
             max-width: 90%;
             margin: auto;
             border-radius: 20px;
@@ -86,6 +86,16 @@
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
             animation: blink 1.5s infinite alternate;
         }
+        .explosion {
+            position: relative;
+            margin: 20px;
+            animation: explode 0.5s ease-out;
+        }
+        .heart-explosion {
+            font-size: 50px;
+            animation: heartExplosion 1s ease-out forwards;
+            color: #ff1493;
+        }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -106,10 +116,78 @@
             0% { transform: scale(1); }
             100% { transform: scale(1.05); }
         }
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        @keyframes heartExplosion {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
+        }
     </style>
     <script>
         function showMessage(id) {
             document.getElementById(id).style.display = 'block';
+        }
+
+        function startGame() {
+            document.querySelector('.proposal').innerHTML = `
+                <h3>Primera pregunta:</h3>
+                QUIÉN LE HABLÓ A QUIÉN PRIMERO?
+                <br> A. Ian  B. Ori  C. Ninguno
+                <br><br>
+                <button onclick="checkAnswer('A', '1')">A. Ian</button>
+                <button onclick="checkAnswer('B', '1')">B. Ori</button>
+                <button onclick="checkAnswer('C', '1')">C. Ninguno</button>
+            `;
+            addExplosion();
+        }
+
+        function checkAnswer(answer, question) {
+            if (question === '1' && answer === 'A') {
+                document.querySelector('.proposal').innerHTML = `
+                    <h3>¡Bien! La respuesta es correcta</h3>
+                    <div class="explosion heart-explosion">💖💥✨</div>
+                    <h3>Segunda pregunta:</h3>
+                    ¿QUIÉN DIO EL PRIMER BESO?
+                    <br> A. Ian  B. Ori
+                    <br><br>
+                    <button onclick="checkAnswer('A', '2')">A. Ian</button>
+                    <button onclick="checkAnswer('B', '2')">B. Ori</button>
+                `;
+            } else if (question === '2' && answer === 'A') {
+                document.querySelector('.proposal').innerHTML = `
+                    <h3>¡Correcto! Bien TE AMO</h3>
+                    <div class="explosion heart-explosion">💖💥✨</div>
+                    <h3>Tercera pregunta:</h3>
+                    ¿QUÉ PLANEAMOS MUCHO?
+                    <br> A. Convivir  B. Los 17  C. Casamiento
+                    <br><br>
+                    <button onclick="checkAnswer('B', '3')">B. Los 17</button>
+                    <button onclick="checkAnswer('A', '3')">A. Convivir</button>
+                    <button onclick="checkAnswer('C', '3')">C. Casamiento</button>
+                `;
+            } else if (question === '3' && answer === 'B') {
+                document.querySelector('.proposal').innerHTML = `
+                    <h3>¡Ya casi, amor! Bien hecho.</h3>
+                    <div class="explosion heart-explosion">💖💥✨</div>
+                    <h3>¿Lista para la última pregunta?</h3>
+                    <br><br>
+                    <h3>"¿TE CASARIAS CONMIGO?" 💍</h3>
+                    <div class="explosion heart-explosion">💖✨🌟❤️</div>
+                    <h1> ¡TE AMO!</h1>
+                `;
+                addExplosion();
+            }
+        }
+
+        function addExplosion() {
+            let explosion = document.createElement('div');
+            explosion.classList.add('explosion');
+            explosion.innerHTML = '💥✨';
+            document.body.appendChild(explosion);
+            setTimeout(() => explosion.remove(), 1500);
         }
     </script>
 </head>
@@ -124,66 +202,4 @@
             <div id="msg1" class="message">Oriana, desde el 10 de agosto, cuando te conocí, mi vida cambió para siempre...te amo mi princesita hermosa 💖</div>
             <img src="https://photos.fife.usercontent.google.com/pw/AP1GczN64mwevZIrZdV7VwqpJKyrBrpjkRCsY85EIn32O4rtYkjeqQFIlHcZBQ=w546-h972-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg2')">
             <div id="msg2" class="message">Sé que no venimos de los mejores días en la relación, pero quiero que sepas que te amo con todo mi corazón. 💕 Te adoro más de lo que podes imaginar.</div>
-            <img src="https://photos.fife.usercontent.google.com/pw/AP1GczPNBCjgZ0WBPAjWuNfwwgWeoLdB4EJnEr1NF4ov_aeCBrXAY8dgIMKfOA=w547-h972-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg3')">
-            <div id="msg3" class="message">Sueño con que llegue el día en que pueda ir a buscarte a los 17 hacer todo lo que siempre nos prometimos, la pijamada mas soñada, esa noche perfecta 🌹</div>
-        </div>
-        <div class="proposal">
-            ¿QUERES JUGAR UN JUEGO? 💖
-            <div>
-                <button onclick="startGame()">Sí, quiero jugar!</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function startGame() {
-            document.querySelector('.proposal').innerHTML = `
-                <h3>Primera pregunta:</h3>
-                QUIÉN LE HABLÓ A QUIÉN PRIMERO?
-                <br> A. Ian  B. Ori  C. Ninguno
-                <br><br>
-                <button onclick="checkAnswer('A', '1')">A. Ian</button>
-                <button onclick="checkAnswer('B', '1')">B. Ori</button>
-                <button onclick="checkAnswer('C', '1')">C. Ninguno</button>
-            `;
-        }
-
-        function checkAnswer(answer, question) {
-            if (question === '1' && answer === 'A') {
-                document.querySelector('.proposal').innerHTML = `
-                    <h3>¡Bien! La respuesta es correcta</h3>
-                    <div class="explosion">✨💥</div>
-                    <h3>Segunda pregunta:</h3>
-                    ¿QUIÉN DIO EL PRIMER BESO?
-                    <br> A. Ian  B. Ori
-                    <br><br>
-                    <button onclick="checkAnswer('A', '2')">A. Ian</button>
-                    <button onclick="checkAnswer('B', '2')">B. Ori</button>
-                `;
-            } else if (question === '2' && answer === 'A') {
-                document.querySelector('.proposal').innerHTML = `
-                    <h3>¡Correcto! Bien TE AMO</h3>
-                    <div class="explosion">✨💥</div>
-                    <h3>Tercera pregunta:</h3>
-                    ¿QUÉ PLANEAMOS MUCHO?
-                    <br> A. Convivir  B. Los 17  C. Casamiento
-                    <br><br>
-                    <button onclick="checkAnswer('B', '3')">B. Los 17</button>
-                    <button onclick="checkAnswer('A', '3')">A. Convivir</button>
-                    <button onclick="checkAnswer('C', '3')">C. Casamiento</button>
-                `;
-            } else if (question === '3' && answer === 'B') {
-                document.querySelector('.proposal').innerHTML = `
-                    <h3>¡Ya casi, amor! Bien hecho.</h3>
-                    <div class="explosion">✨💥</div>
-                    <h3>¿Lista para la última pregunta?</h3>
-                    <br><br>
-                    <h3>"¿TE CASARIAS CONMIGO?" 💍</h3>
-                    <div class="explosion">💖✨🌟❤️</div>
-                    <h1> ¡TE AMO!</h1>
-                `;
-            }
-        }
-    </script>
-</body>
-</html>
+            <img src="https://photos.fife.usercontent.google.com/pw/AP1GczPNBCjgZ0WBPAjWuNfww
