@@ -5,7 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Oriana - Feliz San Valentín</title>
     <style>
-        /* El resto de tus estilos... */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            text-align: center;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .container {
+            padding: 30px;
+            background: rgba(255, 182, 193, 0.9);
+            max-width: 90%;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.8);
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+        }
+        h1, h2 {
+            font-size: 30px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            animation: pulse 1.5s infinite alternate;
+        }
+        p {
+            font-size: 18px;
+            color: #FF1493;
+        }
+        .hearts {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            animation: float 3s infinite;
+        }
+        .bear {
+            width: 120px;
+            margin-top: 20px;
+            animation: bounce 2s infinite;
+        }
+        .photo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .photo {
+            width: 90%;
+            max-width: 300px;
+            border-radius: 20px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+        }
+        .photo:hover {
+            transform: scale(1.1);
+        }
+        .message {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.8);
+            max-width: 90%;
+            margin: 20px auto;
+            font-size: 18px;
+            color: #D81B60;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .proposal {
+            margin-top: 40px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background: #D81B60;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+            animation: blink 1.5s infinite alternate;
+        }
+        .explosion {
+            position: relative;
+            margin: 20px;
+            animation: explode 0.5s ease-out;
+        }
+        .heart-explosion {
+            font-size: 50px;
+            animation: heartExplosion 1s ease-out forwards;
+            color: #ff1493;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(-50%); }
+            50% { transform: translateY(-10px) translateX(-50%); }
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        @keyframes heartExplosion {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            h1, h2 {
+                font-size: 24px;
+            }
+
+            .photo {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .proposal button {
+                font-size: 18px;
+                padding: 12px 20px;
+            }
+
+            .bear {
+                width: 100px;
+            }
+
+            .message {
+                font-size: 16px;
+            }
+        }
     </style>
     <script>
         function showMessage(id) {
@@ -78,17 +226,14 @@
         <h1>FELIZ SAN VALENTÍN, PRINCESITA HERMOSA. TE AMO. ❤️</h1>
         <h2>PARA ESA PERSONA QUE ES MI LUZ EN LA OSCURIDAD ✨</h2>
         <img src="https://source.unsplash.com/120x120/?teddy-bear,pink" alt="Oso rosa" class="bear">
-        
-        <!-- Añadir el botón para iniciar el juego -->
-        <div class="proposal">
-            <button onclick="startGame()">Empezar Juego</button>
-        </div>
-        
         <div class="photo-container">
             <img src="https://photos.fife.usercontent.google.com/pw/AP1GczN7g6jk8nFwHff1ehh2aXloYXdjbIDs7rH_zJOlPskQY7byU-_b4l9SMA=w1280-h960-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg1')">
             <div id="msg1" class="message">Oriana, desde el 10 de agosto, cuando te conocí, mi vida cambió para siempre...te amo mi princesita hermosa 💖</div>
             <img src="https://photos.fife.usercontent.google.com/pw/AP1GczN64mwevZIrZdV7VwqpJKyrBrpjkRCsY85EIn32O4rtYkjeqQFIlHcZBQ=w546-h972-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg2')">
             <div id="msg2" class="message">Sé que no venimos de los mejores días en la relación, pero quiero que sepas que te amo con todo mi corazón. 💕 Te adoro más de lo que podes imaginar.</div>
+        </div>
+        <div class="proposal" onclick="startGame()">
+            <h3>¡Haz clic aquí para comenzar el juego! 🎮</h3>
         </div>
     </div>
 </body>
