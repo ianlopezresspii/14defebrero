@@ -85,6 +85,8 @@
             border-radius: 20px;
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
             animation: blink 1.5s infinite alternate;
+            position: relative;
+            z-index: 2; /* Aseguramos que esté encima de otros elementos */
         }
         .explosion {
             position: relative;
@@ -153,6 +155,24 @@
             .message {
                 font-size: 16px;
             }
+        }
+
+        /* Estilo para los botones */
+        button {
+            background-color: #FF1493;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 10px;
+            transition: background-color 0.3s;
+            z-index: 3; /* Aseguramos que los botones estén encima de otros elementos */
+        }
+
+        button:hover {
+            background-color: #D81B60;
         }
     </style>
     <script>
@@ -233,7 +253,7 @@
             <div id="msg2" class="message">Sé que no venimos de los mejores días en la relación, pero quiero que sepas que te amo con todo mi corazón. 💕 Te adoro más de lo que podes imaginar.</div>
         </div>
         <div class="proposal" onclick="startGame()">
-            <h3>¡Haz clic aquí para comenzar el juego! 🎮</h3>
+            <h3>¡Hace clic aquí para comenzar el juego! 🎮</h3>
         </div>
     </div>
 </body>
