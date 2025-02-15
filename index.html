@@ -28,10 +28,12 @@
             font-size: 30px;
             text-shadow: 0 0 20px rgba(255, 255, 255, 1);
             animation: pulse 1.5s infinite alternate;
+            margin: 20px 0;
         }
         p {
             font-size: 18px;
             color: #FF1493;
+            text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.6);
         }
         .hearts {
             position: absolute;
@@ -130,6 +132,34 @@
             0% { transform: scale(1); opacity: 1; }
             100% { transform: scale(5); opacity: 0; }
         }
+        .hearts-explosion {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 150px;
+            animation: heartsExplosion 2s ease-out forwards;
+        }
+        @keyframes heartsExplosion {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(10); opacity: 0; }
+        }
+        .question-button {
+            background-color: #FF1493;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+            transition: transform 0.3s;
+        }
+        .question-button:hover {
+            transform: scale(1.1);
+        }
     </style>
     <script>
         let score = 0;
@@ -144,22 +174,44 @@
                 q3: 'B'
             };
             const answerElement = document.getElementById(question + '-answer');
+            const explosion = document.createElement('div');
+            explosion.classList.add('explosion');
 
             if (answer === correctAnswers[question]) {
                 answerElement.classList.add('correct-answer');
                 score++;
+                if (question === 'q1') {
+                    explosion.innerText = '¡BIEN! TE AMO';
+                } else if (question === 'q2') {
+                    explosion.innerText = 'YA CASI AMOR BIEN';
+                }
             } else {
                 answerElement.classList.remove('correct-answer');
             }
 
-            if (score === 3) {
-                showProposal();
-            }
+            document.body.appendChild(explosion);
+
+            setTimeout(() => {
+                explosion.style.display = 'none';
+                if (score === 3) {
+                    showHeartsExplosion();
+                    showProposal();
+                }
+            }, 1500);
+        }
+
+        function showHeartsExplosion() {
+            const heartsExplosion = document.createElement('div');
+            heartsExplosion.classList.add('hearts-explosion');
+            heartsExplosion.innerHTML = '💖💗💘💝💞💓💖💗💘💝💞💓';
+            document.body.appendChild(heartsExplosion);
+            setTimeout(() => {
+                heartsExplosion.style.display = 'none';
+            }, 2500);
         }
 
         function showProposal() {
             document.querySelector('.proposal').style.display = 'block';
-            document.querySelector('.explosion').style.display = 'block';
         }
     </script>
 </head>
@@ -180,26 +232,7 @@
         <h2>¿Quieres jugar un juego?</h2>
         <div class="questions">
             <p><b>1. ¿Quién le habló a quién primero?</b></p>
-            <button onclick="checkAnswer('q1', 'A')">A. Ian</button>
-            <button onclick="checkAnswer('q1', 'B')">B. Ori</button>
-            <button onclick="checkAnswer('q1', 'C')">C. Ninguno</button>
-            <p id="q1-answer"></p>
-
-            <p><b>2. ¿Quién dio el primer beso?</b></p>
-            <button onclick="checkAnswer('q2', 'A')">A. Ian</button>
-            <button onclick="checkAnswer('q2', 'B')">B. Ori</button>
-            <p id="q2-answer"></p>
-
-            <p><b>3. ¿Qué planeamos mucho?</b></p>
-            <button onclick="checkAnswer('q3', 'A')">A. Convivir</button>
-            <button onclick="checkAnswer('q3', 'B')">B. Los 17</button>
-            <button onclick="checkAnswer('q3', 'C')">C. Casamiento</button>
-            <p id="q3-answer"></p>
-        </div>
-
-        <div class="explosion">🎆✨🎆✨🎆</div>
-
-        <div class="proposal">Oriana, te quisiera decir que sos el amor de mi vida... 💍 ¿Quisieras casarte conmigo? 💍</div>
-    </div>
-</body>
-</html>
+            <button class="question-button" onclick="checkAnswer('q1', 'A')">A. Ian</button>
+            <button class="question-button" onclick="checkAnswer('q1', 'B')">B. Ori</button>
+            <button class="question-button" onclick="checkAnswer('q1', 'C')">C. Ninguno</button>
+            <p
