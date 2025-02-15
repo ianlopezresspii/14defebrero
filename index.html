@@ -15,7 +15,7 @@
             overflow-x: hidden;
         }
         .container {
-            padding: 20px;
+            padding: 40px;
             background: rgba(255, 182, 193, 0.95);
             max-width: 90%;
             margin: auto;
@@ -23,6 +23,8 @@
             box-shadow: 0 0 30px rgba(255, 20, 147, 0.8);
             position: relative;
             animation: fadeIn 2s ease-in-out;
+            word-wrap: break-word; /* Asegura que el texto largo no se corte */
+            height: auto;
         }
         h1, h2 {
             font-size: 30px;
@@ -34,6 +36,7 @@
             font-size: 18px;
             color: #FF1493;
             text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.6);
+            margin: 10px 0;
         }
         .hearts {
             position: absolute;
@@ -149,8 +152,8 @@
             background-color: #FF1493;
             color: #fff;
             border: none;
-            padding: 10px;
-            font-size: 18px;
+            padding: 15px;
+            font-size: 22px;
             border-radius: 10px;
             margin: 10px;
             cursor: pointer;
@@ -159,6 +162,10 @@
         }
         .question-button:hover {
             transform: scale(1.1);
+        }
+        .question-button-big {
+            font-size: 26px;
+            padding: 20px;
         }
     </style>
     <script>
@@ -223,11 +230,11 @@
         <img src="https://source.unsplash.com/120x120/?teddy-bear,pink" alt="Oso rosa" class="bear">
         <div class="photo-container">
             <img src="https://photos.fife.usercontent.google.com/pw/AP1GczN7g6jk8nFwHff1ehh2aXloYXdjbIDs7rH_zJOlPskQY7byU-_b4l9SMA=w1280-h960-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg1')">
-            <div id="msg1" class="message">Oriana, desde el 10 de agosto de 2024, cuando te conocí, mi vida cambió para siempre...</div>
+            <div id="msg1" class="message">¡Este viaje recien comienza, cada día con vos es perfecto aunque no hagamos nada! 💖</div>
             <img src="https://photos.fife.usercontent.google.com/pw/AP1GczN64mwevZIrZdV7VwqpJKyrBrpjkRCsY85EIn32O4rtYkjeqQFIlHcZBQ=w546-h972-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg2')">
-            <div id="msg2" class="message">Sé que no venimos de los mejores días en la relación, pero quiero que sepas que te amo...</div>
+            <div id="msg2" class="message">A tu lado, todo es más lindo, siempre tengo ganas de estar con vos. ✨</div>
             <img src="https://photos.fife.usercontent.google.com/pw/AP1GczPNBCjgZ0WBPAjWuNfwwgWeoLdB4EJnEr1NF4ov_aeCBrXAY8dgIMKfOA=w547-h972-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg3')">
-            <div id="msg3" class="message">Sueño con que llegue el día en que pueda ir a buscarte...</div>
+            <div id="msg3" class="message">Juntos podemos cumplir todos nuestros sueños, confia en mi . 🥰</div>
         </div>
         <h2>¿Quieres jugar un juego?</h2>
         <div class="questions">
@@ -235,4 +242,19 @@
             <button class="question-button" onclick="checkAnswer('q1', 'A')">A. Ian</button>
             <button class="question-button" onclick="checkAnswer('q1', 'B')">B. Ori</button>
             <button class="question-button" onclick="checkAnswer('q1', 'C')">C. Ninguno</button>
-            <p
+        </div>
+        <div class="questions">
+            <p><b>2. ¿Quién dio el primer beso?</b></p>
+            <button class="question-button" onclick="checkAnswer('q2', 'A')">A. Ian</button>
+            <button class="question-button" onclick="checkAnswer('q2', 'B')">B. Ori</button>
+        </div>
+        <div class="questions">
+            <p><b>3. ¿Qué planeamos mucho?</b></p>
+            <button class="question-button" onclick="checkAnswer('q3', 'A')">A. Convivir</button>
+            <button class="question-button" onclick="checkAnswer('q3', 'B')">B. Los 17</button>
+            <button class="question-button" onclick="checkAnswer('q3', 'C')">C. Casamiento</button>
+        </div>
+        <div class="proposal">¿Te casarias conmigo?</div>
+    </div>
+</body>
+</html>
