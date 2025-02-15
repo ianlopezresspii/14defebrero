@@ -15,7 +15,7 @@
             overflow-x: hidden;
         }
         .container {
-            padding: 40px;
+            padding: 20px;
             background: rgba(255, 182, 193, 0.95);
             max-width: 90%;
             margin: auto;
@@ -23,20 +23,15 @@
             box-shadow: 0 0 30px rgba(255, 20, 147, 0.8);
             position: relative;
             animation: fadeIn 2s ease-in-out;
-            word-wrap: break-word; /* Asegura que el texto largo no se corte */
-            height: auto;
         }
         h1, h2 {
             font-size: 30px;
             text-shadow: 0 0 20px rgba(255, 255, 255, 1);
             animation: pulse 1.5s infinite alternate;
-            margin: 20px 0;
         }
         p {
             font-size: 18px;
             color: #FF1493;
-            text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.6);
-            margin: 10px 0;
         }
         .hearts {
             position: absolute;
@@ -81,7 +76,6 @@
             animation: fadeIn 1s ease-in-out;
         }
         .proposal {
-            display: none;
             margin-top: 40px;
             font-size: 24px;
             font-weight: bold;
@@ -112,149 +106,84 @@
             0% { transform: scale(1); }
             100% { transform: scale(1.05); }
         }
-        .correct-answer {
-            color: #32CD32;
-            font-weight: bold;
-            animation: correctAnswer 1s ease-in-out;
-        }
-        @keyframes correctAnswer {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.2); }
-        }
-        .explosion {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 100px;
-            color: #FFD700;
-            animation: explosion 1.5s ease-out forwards;
-        }
-        @keyframes explosion {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(5); opacity: 0; }
-        }
-        .hearts-explosion {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 150px;
-            animation: heartsExplosion 2s ease-out forwards;
-        }
-        @keyframes heartsExplosion {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(10); opacity: 0; }
-        }
-        .question-button {
-            background-color: #FF1493;
-            color: #fff;
-            border: none;
-            padding: 15px;
-            font-size: 22px;
-            border-radius: 10px;
-            margin: 10px;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-            transition: transform 0.3s;
-        }
-        .question-button:hover {
-            transform: scale(1.1);
-        }
-        .question-button-big {
-            font-size: 26px;
-            padding: 20px;
-        }
     </style>
     <script>
-        let score = 0;
         function showMessage(id) {
             document.getElementById(id).style.display = 'block';
-        }
-
-        function checkAnswer(question, answer) {
-            const correctAnswers = {
-                q1: 'A',
-                q2: 'A',
-                q3: 'B'
-            };
-            const answerElement = document.getElementById(question + '-answer');
-            const explosion = document.createElement('div');
-            explosion.classList.add('explosion');
-
-            if (answer === correctAnswers[question]) {
-                answerElement.classList.add('correct-answer');
-                score++;
-                if (question === 'q1') {
-                    explosion.innerText = '¡BIEN! TE AMO';
-                } else if (question === 'q2') {
-                    explosion.innerText = 'YA CASI AMOR BIEN';
-                }
-            } else {
-                answerElement.classList.remove('correct-answer');
-            }
-
-            document.body.appendChild(explosion);
-
-            setTimeout(() => {
-                explosion.style.display = 'none';
-                if (score === 3) {
-                    showHeartsExplosion();
-                    showProposal();
-                }
-            }, 1500);
-        }
-
-        function showHeartsExplosion() {
-            const heartsExplosion = document.createElement('div');
-            heartsExplosion.classList.add('hearts-explosion');
-            heartsExplosion.innerHTML = '💖💗💘💝💞💓💖💗💘💝💞💓';
-            document.body.appendChild(heartsExplosion);
-            setTimeout(() => {
-                heartsExplosion.style.display = 'none';
-            }, 2500);
-        }
-
-        function showProposal() {
-            document.querySelector('.proposal').style.display = 'block';
         }
     </script>
 </head>
 <body>
     <div class="container">
         <div class="hearts">❤️✨❤️✨❤️</div>
-        <h1>FELIZ SAN VALENTÍN, PRINCESITA DE PAPI. TE AMO. ❤️</h1>
+        <h1>FELIZ SAN VALENTÍN, PRINCESITA HERMOSA. TE AMO. ❤️</h1>
         <h2>PARA ESA PERSONA QUE ES MI LUZ EN LA OSCURIDAD ✨</h2>
         <img src="https://source.unsplash.com/120x120/?teddy-bear,pink" alt="Oso rosa" class="bear">
         <div class="photo-container">
             <img src="https://photos.fife.usercontent.google.com/pw/AP1GczN7g6jk8nFwHff1ehh2aXloYXdjbIDs7rH_zJOlPskQY7byU-_b4l9SMA=w1280-h960-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg1')">
-            <div id="msg1" class="message">¡Este viaje recien comienza, cada día con vos es perfecto aunque no hagamos nada! 💖</div>
+            <div id="msg1" class="message">Oriana, desde el 10 de agosto, cuando te conocí, mi vida cambió para siempre...te amo mi princesita hermosa 💖</div>
             <img src="https://photos.fife.usercontent.google.com/pw/AP1GczN64mwevZIrZdV7VwqpJKyrBrpjkRCsY85EIn32O4rtYkjeqQFIlHcZBQ=w546-h972-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg2')">
-            <div id="msg2" class="message">A tu lado, todo es más lindo, siempre tengo ganas de estar con vos. ✨</div>
+            <div id="msg2" class="message">Sé que no venimos de los mejores días en la relación, pero quiero que sepas que te amo con todo mi corazón. 💕 Te adoro más de lo que podes imaginar.</div>
             <img src="https://photos.fife.usercontent.google.com/pw/AP1GczPNBCjgZ0WBPAjWuNfwwgWeoLdB4EJnEr1NF4ov_aeCBrXAY8dgIMKfOA=w547-h972-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg3')">
-            <div id="msg3" class="message">Juntos podemos cumplir todos nuestros sueños, confia en mi . 🥰</div>
+            <div id="msg3" class="message">Sueño con que llegue el día en que pueda ir a buscarte a los 17 hacer todo lo que siempre nos prometimos, la pijamada mas soñada, esa noche perfecta 🌹</div>
         </div>
-        <h2>¿Quieres jugar un juego?</h2>
-        <div class="questions">
-            <p><b>1. ¿Quién le habló a quién primero?</b></p>
-            <button class="question-button" onclick="checkAnswer('q1', 'A')">A. Ian</button>
-            <button class="question-button" onclick="checkAnswer('q1', 'B')">B. Ori</button>
-            <button class="question-button" onclick="checkAnswer('q1', 'C')">C. Ninguno</button>
+        <div class="proposal">
+            ¿QUIERES JUGAR UN JUEGO? 💖
+            <div>
+                <button onclick="startGame()">Sí, quiero jugar!</button>
+            </div>
         </div>
-        <div class="questions">
-            <p><b>2. ¿Quién dio el primer beso?</b></p>
-            <button class="question-button" onclick="checkAnswer('q2', 'A')">A. Ian</button>
-            <button class="question-button" onclick="checkAnswer('q2', 'B')">B. Ori</button>
-        </div>
-        <div class="questions">
-            <p><b>3. ¿Qué planeamos mucho?</b></p>
-            <button class="question-button" onclick="checkAnswer('q3', 'A')">A. Convivir</button>
-            <button class="question-button" onclick="checkAnswer('q3', 'B')">B. Los 17</button>
-            <button class="question-button" onclick="checkAnswer('q3', 'C')">C. Casamiento</button>
-        </div>
-        <div class="proposal">¿Te casarias conmigo?</div>
     </div>
+
+    <script>
+        function startGame() {
+            document.querySelector('.proposal').innerHTML = `
+                <h3>Primera pregunta:</h3>
+                QUIÉN LE HABLÓ A QUIÉN PRIMERO?
+                <br> A. Ian  B. Ori  C. Ninguno
+                <br><br>
+                <button onclick="checkAnswer('A', '1')">A. Ian</button>
+                <button onclick="checkAnswer('B', '1')">B. Ori</button>
+                <button onclick="checkAnswer('C', '1')">C. Ninguno</button>
+            `;
+        }
+
+        function checkAnswer(answer, question) {
+            if (question === '1' && answer === 'A') {
+                document.querySelector('.proposal').innerHTML = `
+                    <h3>¡Bien! La respuesta es correcta.</h3>
+                    <div class="explosion">✨💥</div>
+                    <h3>Segunda pregunta:</h3>
+                    ¿QUIÉN DIO EL PRIMER BESO?
+                    <br> A. Ian  B. Ori
+                    <br><br>
+                    <button onclick="checkAnswer('A', '2')">A. Ian</button>
+                    <button onclick="checkAnswer('B', '2')">B. Ori</button>
+                `;
+            } else if (question === '2' && answer === 'A') {
+                document.querySelector('.proposal').innerHTML = `
+                    <h3>¡Correcto! Bien, amor TE AMO.</h3>
+                    <div class="explosion">✨💥</div>
+                    <h3>Tercera pregunta:</h3>
+                    ¿QUÉ PLANEAMOS MUCHO?
+                    <br> A. Convivir  B. Los 17  C. Casamiento
+                    <br><br>
+                    <button onclick="checkAnswer('B', '3')">B. Los 17</button>
+                    <button onclick="checkAnswer('A', '3')">A. Convivir</button>
+                    <button onclick="checkAnswer('C', '3')">C. Casamiento</button>
+                `;
+            } else if (question === '3' && answer === 'B') {
+                document.querySelector('.proposal').innerHTML = `
+                    <h3>¡Ya casi, amor! Bien hecho.</h3>
+                    <div class="explosion">✨💥</div>
+                    <h3>¿Listo para la última pregunta?</h3>
+                    <br><br>
+                    <h3>¡La respuesta correcta es: "¿TE CASARIAS CONMIGO?" 💍</h3>
+                    <div class="explosion">💖✨🌟❤️</div>
+                    <h1> ¡TE AMO!</h1>
+                `;
+            }
+        }
+    </script>
 </body>
 </html>
