@@ -75,38 +75,8 @@
             color: #D81B60;
             animation: fadeIn 1s ease-in-out;
         }
-        .game-container {
-            margin-top: 40px;
-            font-size: 20px;
-            color: #fff;
-            background: #FF1493;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
-        }
-        .question {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-        .answer {
-            cursor: pointer;
-            font-size: 18px;
-            margin: 10px;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .answer:hover {
-            background-color: #FF69B4;
-        }
-        .correct {
-            background-color: #4CAF50;
-        }
-        .incorrect {
-            background-color: #f44336;
-        }
         .proposal {
+            display: none;
             margin-top: 40px;
             font-size: 24px;
             font-weight: bold;
@@ -115,15 +85,7 @@
             padding: 20px;
             border-radius: 20px;
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
-            display: none;
             animation: blink 1.5s infinite alternate;
-        }
-        .explosion {
-            display: none;
-            font-size: 30px;
-            color: #FFD700;
-            text-align: center;
-            animation: explode 1s ease-out forwards;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -141,41 +103,63 @@
             0% { opacity: 1; }
             100% { opacity: 0.7; }
         }
-        @keyframes explode {
-            0% { transform: scale(1); opacity: 0; }
-            100% { transform: scale(2); opacity: 1; }
-        }
         @keyframes pulse {
             0% { transform: scale(1); }
             100% { transform: scale(1.05); }
         }
+        .correct-answer {
+            color: #32CD32;
+            font-weight: bold;
+            animation: correctAnswer 1s ease-in-out;
+        }
+        @keyframes correctAnswer {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+        .explosion {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: #FFD700;
+            animation: explosion 1.5s ease-out forwards;
+        }
+        @keyframes explosion {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(5); opacity: 0; }
+        }
     </style>
     <script>
+        let score = 0;
         function showMessage(id) {
             document.getElementById(id).style.display = 'block';
         }
 
-        function startGame() {
-            document.getElementById('game-container').style.display = 'block';
+        function checkAnswer(question, answer) {
+            const correctAnswers = {
+                q1: 'A',
+                q2: 'A',
+                q3: 'B'
+            };
+            const answerElement = document.getElementById(question + '-answer');
+
+            if (answer === correctAnswers[question]) {
+                answerElement.classList.add('correct-answer');
+                score++;
+            } else {
+                answerElement.classList.remove('correct-answer');
+            }
+
+            if (score === 3) {
+                showProposal();
+            }
         }
 
-        function checkAnswer(question, answer) {
-            if (answer === question.correct) {
-                document.getElementById(question.id).classList.add('correct');
-            } else {
-                document.getElementById(question.id).classList.add('incorrect');
-            }
-            document.getElementById(question.id).disabled = true;
-
-            // Check if all questions are answered correctly
-            if (document.querySelectorAll('.correct').length === 3) {
-                setTimeout(() => {
-                    document.getElementById('explosion').style.display = 'block';
-                    setTimeout(() => {
-                        document.getElementById('proposal').style.display = 'block';
-                    }, 2000);
-                }, 1000);
-            }
+        function showProposal() {
+            document.querySelector('.proposal').style.display = 'block';
+            document.querySelector('.explosion').style.display = 'block';
         }
     </script>
 </head>
@@ -193,27 +177,29 @@
             <img src="https://photos.fife.usercontent.google.com/pw/AP1GczPNBCjgZ0WBPAjWuNfwwgWeoLdB4EJnEr1NF4ov_aeCBrXAY8dgIMKfOA=w547-h972-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg3')">
             <div id="msg3" class="message">Sueño con que llegue el día en que pueda ir a buscarte...</div>
         </div>
+        <h2>¿Quieres jugar un juego?</h2>
+        <div class="questions">
+            <p><b>1. ¿Quién le habló a quién primero?</b></p>
+            <button onclick="checkAnswer('q1', 'A')">A. Ian</button>
+            <button onclick="checkAnswer('q1', 'B')">B. Ori</button>
+            <button onclick="checkAnswer('q1', 'C')">C. Ninguno</button>
+            <p id="q1-answer"></p>
 
-        <!-- Game and proposal -->
-        <div class="game-container" id="game-container">
-            <h2>¿Quieres jugar un juego?</h2>
-            <div class="question">1. ¿Quién le habló a quién primero?</div>
-            <button class="answer" id="q1a" onclick="checkAnswer({id: 'q1a', correct: 'A'})">A. Ian</button>
-            <button class="answer" id="q1b" onclick="checkAnswer({id: 'q1b', correct: 'B'})">B. Ori</button>
-            <button class="answer" id="q1c" onclick="checkAnswer({id: 'q1c', correct: 'C'})">C. Ninguno</button>
+            <p><b>2. ¿Quién dio el primer beso?</b></p>
+            <button onclick="checkAnswer('q2', 'A')">A. Ian</button>
+            <button onclick="checkAnswer('q2', 'B')">B. Ori</button>
+            <p id="q2-answer"></p>
 
-            <div class="question">2. ¿Quién dio el primer beso?</div>
-            <button class="answer" id="q2a" onclick="checkAnswer({id: 'q2a', correct: 'A'})">A. Ian</button>
-            <button class="answer" id="q2b" onclick="checkAnswer({id: 'q2b', correct: 'B'})">B. Ori</button>
-
-            <div class="question">3. ¿Qué planeamos mucho?</div>
-            <button class="answer" id="q3a" onclick="checkAnswer({id: 'q3a', correct: 'A'})">A. Convivir</button>
-            <button class="answer" id="q3b" onclick="checkAnswer({id: 'q3b', correct: 'B'})">B. Los 17</button>
-            <button class="answer" id="q3c" onclick="checkAnswer({id: 'q3c', correct: 'C'})">C. Casamiento</button>
+            <p><b>3. ¿Qué planeamos mucho?</b></p>
+            <button onclick="checkAnswer('q3', 'A')">A. Convivir</button>
+            <button onclick="checkAnswer('q3', 'B')">B. Los 17</button>
+            <button onclick="checkAnswer('q3', 'C')">C. Casamiento</button>
+            <p id="q3-answer"></p>
         </div>
 
-        <div id="explosion" class="explosion">💥💖✨</div>
-        <div id="proposal" class="proposal">¡BIEN!! ¡TE AMO! 💍</div>
+        <div class="explosion">🎆✨🎆✨🎆</div>
+
+        <div class="proposal">Oriana, te quisiera decir que sos el amor de mi vida... 💍 ¿Quisieras casarte conmigo? 💍</div>
     </div>
 </body>
 </html>
