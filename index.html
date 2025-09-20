@@ -1,267 +1,158 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Oriana - Feliz San Valentín</title>
-    <style>
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #FF69B4, #FF1493);
-            text-align: center;
-            color: #fff;
-            overflow-x: hidden;
-        }
-        .container {
-            padding: 30px;
-            background: rgba(255, 182, 193, 0.9);
-            max-width: 90%;
-            margin: auto;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.8);
-            position: relative;
-            animation: fadeIn 2s ease-in-out;
-        }
-        h1, h2 {
-            font-size: 30px;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 1);
-            animation: pulse 1.5s infinite alternate;
-        }
-        p {
-            font-size: 18px;
-            color: #FF1493;
-        }
-        .hearts {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 50px;
-            animation: float 3s infinite;
-        }
-        .bear {
-            width: 120px;
-            margin-top: 20px;
-            animation: bounce 2s infinite;
-        }
-        .photo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .photo {
-            width: 90%;
-            max-width: 300px;
-            border-radius: 20px;
-            margin: 20px 0;
-            cursor: pointer;
-            transition: transform 0.3s;
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
-        }
-        .photo:hover {
-            transform: scale(1.1);
-        }
-        .message {
-            display: none;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.8);
-            max-width: 90%;
-            margin: 20px auto;
-            font-size: 18px;
-            color: #D81B60;
-            animation: fadeIn 1s ease-in-out;
-        }
-        .proposal {
-            margin-top: 40px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-            background: #D81B60;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
-            animation: blink 1.5s infinite alternate;
-            position: relative;
-            z-index: 2;
-        }
-        .explosion {
-            position: relative;
-            margin: 20px;
-            animation: explode 0.5s ease-out;
-        }
-        .heart-explosion {
-            font-size: 50px;
-            animation: heartExplosion 1s ease-out forwards;
-            color: #ff1493;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(-50%); }
-            50% { transform: translateY(-10px) translateX(-50%); }
-        }
-        @keyframes blink {
-            0% { opacity: 1; }
-            100% { opacity: 0.7; }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-        @keyframes explode {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(2); opacity: 0; }
-        }
-        @keyframes heartExplosion {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.8; }
-            100% { transform: scale(2); opacity: 0; }
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felices 2 Meses 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow-x: hidden;
+      color: #fff;
+      text-align: center;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
+    /* Pantalla inicial */
+    #inicio {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 2s ease;
+    }
 
-            h1, h2 {
-                font-size: 24px;
-            }
+    h1 {
+      font-size: 2.5rem;
+      white-space: nowrap;
+      border-right: 4px solid #fff;
+      width: 0;
+      overflow: hidden;
+      animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
+    }
 
-            .photo {
-                width: 100%;
-                max-width: 250px;
-            }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
 
-            .proposal button {
-                font-size: 18px;
-                padding: 12px 20px;
-            }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
 
-            .bear {
-                width: 100px;
-            }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 25px;
+      background: #ff6f91;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-            .message {
-                font-size: 16px;
-            }
-        }
+    button:hover {
+      background: #ff3f6d;
+    }
 
-        /* Estilo para los botones */
-        button {
-            background-color: #FF1493;
-            color: white;
-            border: none;
-            padding: 15px 32px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 10px;
-            margin: 10px;
-            transition: background-color 0.3s;
-        }
+    /* Galería */
+    #galeria {
+      display: none;
+      padding: 20px;
+      animation: fadeIn 2s ease;
+    }
 
-        button:hover {
-            background-color: #D81B60;
-        }
+    .foto {
+      margin: 10px;
+      border-radius: 15px;
+      overflow: hidden;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
 
-        /* Estilo específico para los botones de la propuesta */
-        .proposal button {
-            background-color: #D81B60;
-        }
-        .proposal button:hover {
-            background-color: #FF69B4;
-        }
-    </style>
-    <script>
-        function showMessage(id) {
-            document.getElementById(id).style.display = 'block';
-        }
+    .foto img {
+      width: 250px;
+      border-radius: 15px;
+    }
 
-        function startGame() {
-            document.querySelector('.proposal').innerHTML = `
-                <h3>Primera pregunta:</h3>
-                QUIÉN LE HABLÓ A QUIÉN PRIMERO?
-                <br> A. Ian  B. Ori  C. Ninguno
-                <br><br>
-                <button onclick="checkAnswer('A', '1')">A. Ian</button>
-                <button onclick="checkAnswer('B', '1')">B. Ori</button>
-                <button onclick="checkAnswer('C', '1')">C. Ninguno</button>
-            `;
-            addExplosion();
-        }
+    .foto:hover {
+      transform: scale(1.1);
+    }
 
-        function checkAnswer(answer, question) {
-            if (question === '1' && answer === 'A') {
-                document.querySelector('.proposal').innerHTML = `
-                    <h3>¡Bien! La respuesta es correcta</h3>
-                    <div class="explosion heart-explosion">💖💥✨</div>
-                    <h3>Segunda pregunta:</h3>
-                    ¿QUIÉN DIO EL PRIMER BESO?
-                    <br> A. Ian  B. Ori
-                    <br><br>
-                    <button onclick="checkAnswer('A', '2')">A. Ian</button>
-                    <button onclick="checkAnswer('B', '2')">B. Ori</button>
-                `;
-            } else if (question === '2' && answer === 'A') {
-                document.querySelector('.proposal').innerHTML = `
-                    <h3>¡Correcto! Bien TE AMO</h3>
-                    <div class="explosion heart-explosion">💖💥✨</div>
-                    <h3>Segunda pregunta:</h3>
-                    ¿QUÉ PLANEAMOS MUCHO?
-                    <br> A. Convivir  B. Los 17  C. Casamiento
-                    <br><br>
-                    <button onclick="checkAnswer('B', '3')">B. Los 17</button>
-                    <button onclick="checkAnswer('A', '3')">A. Convivir</button>
-                    <button onclick="checkAnswer('C', '3')">C. Casamiento</button>
-                `;
-            } else if (question === '3' && answer === 'B') {
-                document.querySelector('.proposal').innerHTML = `
-                    <h3>¡Ya casi, amor! Bien hecho.</h3>
-                    <div class="explosion heart-explosion">💖💥✨</div>
-                    <h3>¿Lista para la última pregunta?</h3>
-                    <br><br>
-                    <h3>"¿TE CASARIAS CONMIGO?" 💍</h3>
-                    <div class="explosion heart-explosion">💖✨🌟❤️</div>
-                    <h1> ¡TE AMO!</h1>
-                `;
-                addExplosion();
-            }
-        }
+    .frase {
+      font-size: 1.3rem;
+      margin: 20px 0;
+      animation: fadeInUp 2s ease;
+    }
 
-        function addExplosion() {
-            let explosion = document.createElement('div');
-            explosion.classList.add('explosion');
-            explosion.innerHTML = '💥✨';
-            document.body.appendChild(explosion);
-            setTimeout(() => explosion.remove(), 1500);
-        }
-    </script>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Corazones flotando */
+    .corazon {
+      position: fixed;
+      bottom: -50px;
+      color: #ffdde1;
+      font-size: 2rem;
+      animation: subir 6s linear infinite;
+    }
+
+    @keyframes subir {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hearts">❤️✨❤️✨❤️</div>
-        <h1>FELIZ SAN VALENTÍN, PRINCESITA HERMOSA. TE AMO. ❤️</h1>
-        <h2>PARA ESA PERSONA QUE ES MI LUZ EN LA OSCURIDAD ✨</h2>
-        <img src="https://source.unsplash.com/120x120/?teddy-bear,pink" alt="Oso rosa" class="bear">
-        <div class="photo-container">
-            <img src="https://photos.fife.usercontent.google.com/pw/AP1GczN7g6jk8nFwHff1ehh2aXloYXdjbIDs7rH_zJOlPskQY7byU-_b4l9SMA=w1280-h960-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg1')">
-            <div id="msg1" class="message">Oriana, desde el 10 de agosto, cuando te conocí, mi vida cambió para siempre...te amo mi princesita hermosa 💖</div>
-            <img src="https://photos.fife.usercontent.google.com/pw/AP1GczN64mwevZIrZdV7VwqpJKyrBrpjkRCsY85EIn32O4rtYkjeqQFIlHcZBQ=w546-h972-s-no-gm?authuser=0" class="photo" onclick="showMessage('msg2')">
-            <div id="msg2" class="message">Sé que no venimos de los mejores días en la relación, pero quiero que sepas que te amo con todo mi corazón. 💕 Te adoro más de lo que podes imaginar.</div>
-        </div>
-        <div class="proposal" onclick="startGame()">
-            <h3>¡Haz clic aquí para comenzar el juego! 🎮</h3>
-        </div>
-    </div>
+
+  <!-- Pantalla inicial -->
+  <section id="inicio">
+    <h1>Felices 2 meses mi chiquita linda 💖</h1>
+    <button onclick="mostrarGaleria()">Entrar</button>
+  </section>
+
+  <!-- Galería -->
+  <section id="galeria">
+    <div class="frase">Cada día a tu lado es un regalo ✨</div>
+    <div class="foto"><img src="foto1.jpg"></div>
+    <div class="foto"><img src="foto2.jpg"></div>
+    <div class="foto"><img src="foto3.jpg"></div>
+    <div class="frase">Gracias por hacerme tan feliz 💕</div>
+    <div class="foto"><img src="foto4.jpg"></div>
+    <div class="foto"><img src="foto5.jpg"></div>
+  </section>
+
+  <!-- Corazones flotando -->
+  <script>
+    function mostrarGaleria() {
+      document.getElementById('inicio').style.display = 'none';
+      document.getElementById('galeria').style.display = 'block';
+    }
+
+    // Crear corazones
+    setInterval(() => {
+      let corazon = document.createElement('div');
+      corazon.innerHTML = "💖";
+      corazon.classList.add('corazon');
+      corazon.style.left = Math.random() * 100 + "vw";
+      corazon.style.fontSize = (Math.random() * 20 + 20) + "px";
+      document.body.appendChild(corazon);
+
+      setTimeout(() => {
+        corazon.remove();
+      }, 6000);
+    }, 500);
+  </script>
 </body>
 </html>
