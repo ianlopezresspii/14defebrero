@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Felices 2 Meses 💖</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
   body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background: linear-gradient(135deg, #ff6ec7, #ffc6ff);
     overflow: hidden;
-    color: #fff;
     text-align: center;
     position: relative;
   }
@@ -25,35 +26,36 @@
   }
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     white-space: nowrap;
-    border-right: 5px solid #fff;
+    border-right: 4px solid #fff;
     width: 0;
     overflow: hidden;
     animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
-    text-shadow: 0 0 30px #fff, 0 0 60px #ff69b4, 0 0 100px #ff1493;
+    color: #ffdde1;
+    text-shadow: 0 0 15px #ff9aa2, 0 0 30px #ff69b4, 0 0 50px #ff1493;
   }
 
   @keyframes typing { from { width: 0; } to { width: 100%; } }
   @keyframes blink { 50% { border-color: transparent; } }
 
   button {
-    margin-top: 30px;
-    padding: 20px 40px;
-    font-size: 1.7rem;
+    margin-top: 25px;
+    padding: 18px 36px;
+    font-size: 1.5rem;
     border: none;
-    border-radius: 35px;
+    border-radius: 30px;
     background: linear-gradient(45deg, #ff3f6d, #ff9a9e);
-    color: white;
+    color: #fff;
     cursor: pointer;
-    transition: 0.4s;
-    box-shadow: 0 0 35px #ff69b4, 0 0 70px #ff1493;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
   }
 
   button:hover {
     background: linear-gradient(45deg, #ff1493, #ff6ec7);
-    transform: scale(1.2);
-    box-shadow: 0 0 60px #ff69b4, 0 0 120px #ff1493;
+    transform: scale(1.15);
+    box-shadow: 0 0 40px #ff69b4, 0 0 80px #ff1493;
   }
 
   #slider {
@@ -69,7 +71,7 @@
     height: 100vh;
     object-fit: cover;
     transition: transform 1s ease, filter 1s ease;
-    filter: brightness(1.3) contrast(1.3) saturate(1.7);
+    filter: brightness(1.2) contrast(1.2) saturate(1.5);
   }
 
   .foto img.show {
@@ -84,23 +86,29 @@
   .frase, .titulo {
     position: absolute;
     width: 90%;
-    text-shadow: 0 0 30px #fff, 0 0 60px #ff69b4;
-    animation: fadeInUp 1s ease forwards;
+    animation: fadeUpScale 1s ease forwards;
+    text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4;
   }
 
   .frase {
     bottom: 15%;
-    font-size: 2rem;
+    font-size: 1.6rem;
+    color: #ffe6f0;
+    line-height: 1.4;
   }
 
   .titulo {
     top: 10%;
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffb6c1;
   }
 
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUpScale { 
+    from { opacity: 0; transform: translateY(30px) scale(0.95); } 
+    to { opacity: 1; transform: translateY(0) scale(1); } 
+  }
 
   /* Corazones flotando */
   .corazon {
@@ -133,17 +141,17 @@
 const fotos = ["foto1.jpeg", "foto2.jpeg", "foto3.jpeg", "foto4.jpeg", "foto5.jpeg"];
 const titulos = [
   "Cuando te pedí que seas mi novia 💖",
-  "Cuando te quedaste a dormir en mi casa 🏡",
+  "Cuando dormimos juntos por primera vez en mi casa 🏡",
   "Día divertido en la plaza 🌳",
-  "Plaza Castelli, otro día genial 🎠",
+  "Plaza Castelli, otro día perfecto con vos 🎠",
   "Tus hermosos ojos, perfectos 💘"
 ];
 const frases = [
-  "Desde ese momento supe que quería estar contigo para siempre 💗",
-  "Estar juntos así me hizo darme cuenta lo increíble que eres 💝",
-  "Nos divertimos tanto hablando y jugando, cada instante contigo es único 💓",
+  "Supe que quería estar con vos para siempre 💗",
+  "Estar juntos así me hizo darme cuenta lo increíble que sos mi princesita hermosa 💝",
+  "Nos divertimos tanto hablando y jugando 💓",
   "Cada día juntos en la plaza me recuerda lo afortunado que soy 💖",
-  "Tu mirada me enamora más cada día, bebé 💞"
+  "Tu mirada me enamora más cada día, sos perfecta 💞"
 ];
 
 let index = 0;
@@ -180,10 +188,10 @@ setInterval(() => {
   corazon.innerHTML = coraz[Math.floor(Math.random()*coraz.length)];
   corazon.classList.add('corazon');
   corazon.style.left = Math.random() * 100 + "vw";
-  corazon.style.fontSize = (Math.random() * 50 + 30) + "px";
+  corazon.style.fontSize = (Math.random() * 40 + 25) + "px";
   document.body.appendChild(corazon);
-  setTimeout(() => { corazon.remove(); }, 4000);
-}, 200);
+  setTimeout(() => { corazon.remove(); }, 3500);
+}, 150);
 
 </script>
 
