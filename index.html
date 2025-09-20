@@ -9,7 +9,7 @@
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #ff6ec7, #ffc6ff);
-    overflow-x: hidden;
+    overflow: hidden;
     color: #fff;
     text-align: center;
     position: relative;
@@ -25,13 +25,13 @@
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     white-space: nowrap;
-    border-right: 4px solid #fff;
+    border-right: 5px solid #fff;
     width: 0;
     overflow: hidden;
     animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
-    text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4, 0 0 80px #ff1493;
+    text-shadow: 0 0 30px #fff, 0 0 60px #ff69b4, 0 0 100px #ff1493;
   }
 
   @keyframes typing { from { width: 0; } to { width: 100%; } }
@@ -39,61 +39,76 @@
 
   button {
     margin-top: 30px;
-    padding: 15px 35px;
-    font-size: 1.5rem;
+    padding: 20px 40px;
+    font-size: 1.7rem;
     border: none;
-    border-radius: 30px;
+    border-radius: 35px;
     background: linear-gradient(45deg, #ff3f6d, #ff9a9e);
     color: white;
     cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 0 25px #ff69b4, 0 0 50px #ff1493;
+    transition: 0.4s;
+    box-shadow: 0 0 35px #ff69b4, 0 0 70px #ff1493;
   }
 
   button:hover {
     background: linear-gradient(45deg, #ff1493, #ff6ec7);
-    transform: scale(1.15);
-    box-shadow: 0 0 40px #ff69b4, 0 0 80px #ff1493;
+    transform: scale(1.2);
+    box-shadow: 0 0 60px #ff69b4, 0 0 120px #ff1493;
   }
 
   #slider {
     display: none;
-    padding: 20px;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
     animation: fadeIn 2s ease;
   }
 
   .foto img {
-    width: 280px;
-    border-radius: 25px;
-    box-shadow: 0 0 25px rgba(255,0,128,0.6), 0 0 50px rgba(255,0,128,0.4);
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    transition: transform 1s ease, filter 1s ease;
     filter: brightness(1.3) contrast(1.3) saturate(1.7);
-    transition: transform 0.5s, filter 0.5s;
   }
 
-  .foto img:hover {
-    transform: scale(1.25) rotate(-3deg);
-    filter: brightness(1.6) contrast(1.5) saturate(2);
-    box-shadow: 0 0 60px #ff69b4, 0 0 120px #ff1493;
+  .foto img.show {
+    animation: zoomFade 1s ease forwards;
+  }
+
+  @keyframes zoomFade {
+    0% { transform: scale(1); opacity: 0; }
+    100% { transform: scale(1.05); opacity: 1; }
+  }
+
+  .frase, .titulo {
+    position: absolute;
+    width: 90%;
+    text-shadow: 0 0 30px #fff, 0 0 60px #ff69b4;
+    animation: fadeInUp 1s ease forwards;
   }
 
   .frase {
-    font-size: 1.7rem;
-    margin: 30px 0;
-    animation: fadeInUp 2s ease, pulse 1.5s infinite;
-    text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4;
+    bottom: 15%;
+    font-size: 2rem;
+  }
+
+  .titulo {
+    top: 10%;
+    font-size: 2.5rem;
+    font-weight: bold;
   }
 
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
   /* Corazones flotando */
   .corazon {
     position: fixed;
     bottom: -50px;
-    font-size: 3rem;
-    animation: subir 3s linear infinite;
-    text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4;
+    font-size: 3.5rem;
+    animation: subir 2s linear infinite;
+    text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4;
   }
 
   @keyframes subir { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-110vh) scale(2); opacity: 0; } }
@@ -109,18 +124,26 @@
 
 <section id="slider">
   <div class="foto"><img id="imagenSlider" src="" alt="Foto"></div>
+  <div class="titulo" id="tituloSlider"></div>
   <div class="frase" id="fraseSlider"></div>
   <button id="siguienteBtn">Siguiente 💗</button>
 </section>
 
 <script>
 const fotos = ["foto1.jpeg", "foto2.jpeg", "foto3.jpeg", "foto4.jpeg", "foto5.jpeg"];
+const titulos = [
+  "Cuando te pedí que seas mi novia 💖",
+  "Cuando te quedaste a dormir en mi casa 🏡",
+  "Día divertido en la plaza 🌳",
+  "Plaza Castelli, otro día genial 🎠",
+  "Tus hermosos ojos, perfectos 💘"
+];
 const frases = [
-  "Cada día a tu lado es un regalo 💖",
-  "Gracias por hacerme tan feliz 💗",
-  "Tu sonrisa ilumina mi mundo 💝",
-  "A tu lado todo es perfecto 💘",
-  "Por muchos meses más juntos mi amor 💓"
+  "Desde ese momento supe que quería estar contigo para siempre 💗",
+  "Estar juntos así me hizo darme cuenta lo increíble que eres 💝",
+  "Nos divertimos tanto hablando y jugando, cada instante contigo es único 💓",
+  "Cada día juntos en la plaza me recuerda lo afortunado que soy 💖",
+  "Tu mirada me enamora más cada día, bebé 💞"
 ];
 
 let index = 0;
@@ -132,11 +155,16 @@ function iniciarSlider() {
 }
 
 function mostrarSlide() {
-  document.getElementById('imagenSlider').src = fotos[index];
+  const img = document.getElementById('imagenSlider');
+  img.classList.remove('show');
+  img.src = fotos[index];
+  img.onload = () => img.classList.add('show'); 
   document.getElementById('fraseSlider').textContent = frases[index];
+  document.getElementById('tituloSlider').textContent = titulos[index];
   if(index === fotos.length - 1) {
-    document.getElementById('siguienteBtn').textContent = "💞 Fin 💞";
-    document.getElementById('siguienteBtn').disabled = true;
+    const btn = document.getElementById('siguienteBtn');
+    btn.textContent = "💞 Fin 💞";
+    btn.disabled = true;
   }
 }
 
@@ -152,10 +180,10 @@ setInterval(() => {
   corazon.innerHTML = coraz[Math.floor(Math.random()*coraz.length)];
   corazon.classList.add('corazon');
   corazon.style.left = Math.random() * 100 + "vw";
-  corazon.style.fontSize = (Math.random() * 35 + 25) + "px";
+  corazon.style.fontSize = (Math.random() * 50 + 30) + "px";
   document.body.appendChild(corazon);
-  setTimeout(() => { corazon.remove(); }, 3000);
-}, 250);
+  setTimeout(() => { corazon.remove(); }, 4000);
+}, 200);
 
 </script>
 
