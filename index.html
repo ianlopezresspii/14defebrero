@@ -5,121 +5,132 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Felices 2 Meses 💖</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #ff6ec7, #ffc6ff);
-    overflow: hidden;
-    text-align: center;
-    position: relative;
-  }
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #ff6ec7, #ffc6ff);
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+}
 
-  #inicio {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 2s ease;
-  }
+#inicio {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 2s ease;
+}
 
-  h1 {
-    font-size: 3rem;
-    white-space: nowrap;
-    border-right: 4px solid #fff;
-    width: 0;
-    overflow: hidden;
-    animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
-    color: #ffdde1;
-    text-shadow: 0 0 15px #ff9aa2, 0 0 30px #ff69b4, 0 0 50px #ff1493;
-  }
+h1 {
+  font-size: 3rem;
+  white-space: nowrap;
+  border-right: 4px solid #fff;
+  width: 0;
+  overflow: hidden;
+  animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
+  color: #ffdde1;
+  text-shadow: 0 0 15px #ff9aa2, 0 0 30px #ff69b4, 0 0 50px #ff1493;
+}
 
-  @keyframes typing { from { width: 0; } to { width: 100%; } }
-  @keyframes blink { 50% { border-color: transparent; } }
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+@keyframes blink { 50% { border-color: transparent; } }
 
-  button {
-    margin-top: 25px;
-    padding: 18px 36px;
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #ff3f6d, #ff9a9e);
-    color: #fff;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
-  }
+button {
+  margin-top: 25px;
+  padding: 18px 36px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff3f6d, #ff9a9e);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
+}
 
-  button:hover {
-    background: linear-gradient(45deg, #ff1493, #ff6ec7);
-    transform: scale(1.15);
-    box-shadow: 0 0 40px #ff69b4, 0 0 80px #ff1493;
-  }
+button:hover {
+  background: linear-gradient(45deg, #ff1493, #ff6ec7);
+  transform: scale(1.2);
+  box-shadow: 0 0 40px #ff69b4, 0 0 80px #ff1493;
+}
 
-  #slider {
-    display: none;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    animation: fadeIn 2s ease;
-  }
+#slider {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
 
-  .foto img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    transition: transform 1s ease, filter 1s ease;
-    filter: brightness(1.2) contrast(1.2) saturate(1.5);
-  }
+.foto img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  transition: transform 1.5s ease, filter 1.5s ease;
+  filter: brightness(1.3) contrast(1.3) saturate(1.7);
+}
 
-  .foto img.show {
-    animation: zoomFade 1s ease forwards;
-  }
+.foto img.show {
+  animation: zoomFade 1s ease forwards;
+}
 
-  @keyframes zoomFade {
-    0% { transform: scale(1); opacity: 0; }
-    100% { transform: scale(1.05); opacity: 1; }
-  }
+@keyframes zoomFade {
+  0% { transform: scale(1); opacity: 0; }
+  100% { transform: scale(1.05); opacity: 1; }
+}
 
-  .frase, .titulo {
-    position: absolute;
-    width: 90%;
-    animation: fadeUpScale 1s ease forwards;
-    text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4;
-  }
+.titulo, .frase {
+  position: absolute;
+  width: 90%;
+  animation: fadeUpPulse 1s ease forwards;
+  text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4;
+}
 
-  .frase {
-    bottom: 15%;
-    font-size: 1.6rem;
-    color: #ffe6f0;
-    line-height: 1.4;
-  }
+.frase {
+  bottom: 15%;
+  font-size: 1.6rem;
+  color: #ffe6f0;
+  line-height: 1.4;
+}
 
-  .titulo {
-    top: 10%;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #ffb6c1;
-  }
+.titulo {
+  top: 10%;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffb6c1;
+}
 
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes fadeUpScale { 
-    from { opacity: 0; transform: translateY(30px) scale(0.95); } 
-    to { opacity: 1; transform: translateY(0) scale(1); } 
-  }
+@keyframes fadeUpPulse {
+  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+  50% { transform: translateY(0) scale(1.05); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
 
-  /* Corazones flotando */
-  .corazon {
-    position: fixed;
-    bottom: -50px;
-    font-size: 3.5rem;
-    animation: subir 2s linear infinite;
-    text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4;
-  }
+.particle {
+  position: absolute;
+  font-size: 20px;
+  pointer-events: none;
+  animation: floatUp 3s linear forwards;
+}
 
-  @keyframes subir { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-110vh) scale(2); opacity: 0; } }
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+}
+
+.corazon {
+  position: fixed;
+  bottom: -50px;
+  font-size: 3.5rem;
+  animation: subir 2s linear infinite;
+  text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4;
+}
+
+@keyframes subir { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-110vh) scale(2); opacity: 0; } }
 
 </style>
 </head>
@@ -138,10 +149,10 @@
 </section>
 
 <script>
-const fotos = ["foto1.jpeg", "foto2.jpeg", "foto3.jpeg", "foto4.jpeg", "foto5.jpeg"];
+const fotos = ["foto1.jpeg","foto2.jpeg","foto3.jpeg","foto4.jpeg","foto5.jpeg"];
 const titulos = [
   "Cuando te pedí que seas mi novia 💖",
-  "Cuando dormimos juntos por primera vez en mi casa 🏡",
+  "Cuando te quedaste a dormir en mi casa 🏡",
   "Día divertido en la plaza 🌳",
   "Plaza Castelli, otro día perfecto con vos 🎠",
   "Tus hermosos ojos, perfectos 💘"
@@ -151,7 +162,7 @@ const frases = [
   "Estar juntos así me hizo darme cuenta lo increíble que sos mi princesita hermosa 💝",
   "Nos divertimos tanto hablando y jugando 💓",
   "Cada día juntos en la plaza me recuerda lo afortunado que soy 💖",
-  "Tu mirada me enamora más cada día, sos perfecta 💞"
+  "Tu mirada me enamora más cada día, me pierdo en tu mirada perfecta 💞"
 ];
 
 let index = 0;
@@ -160,6 +171,7 @@ function iniciarSlider() {
   document.getElementById('inicio').style.display = 'none';
   document.getElementById('slider').style.display = 'block';
   mostrarSlide();
+  generarParticles();
 }
 
 function mostrarSlide() {
@@ -180,6 +192,19 @@ document.getElementById('siguienteBtn').addEventListener('click', () => {
   index++;
   if(index < fotos.length) mostrarSlide();
 });
+
+function generarParticles() {
+  setInterval(() => {
+    const particleEmojis = ["💗","💖","💝","💘","💓"];
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.innerHTML = particleEmojis[Math.floor(Math.random()*particleEmojis.length)];
+    particle.style.left = Math.random()*100 + "vw";
+    particle.style.fontSize = (Math.random()*30 + 20) + "px";
+    document.body.appendChild(particle);
+    setTimeout(() => { particle.remove(); }, 3000);
+  }, 100);
+}
 
 // Corazones flotando
 setInterval(() => {
