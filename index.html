@@ -34,7 +34,7 @@ h1 {
   overflow: hidden;
   animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
   color: #ffdde1;
-  text-shadow: 0 0 20px #fff,0 0 40px #ff69b4,0 0 60px #ff1493;
+  text-shadow: 2px 2px 4px #000, 0 0 15px #fff,0 0 30px #ff69b4;
 }
 
 @keyframes typing { from { width: 0; } to { width: 100%; } }
@@ -72,7 +72,7 @@ button:hover {
   height: 100vh;
   object-fit: cover;
   transition: transform 2s ease, filter 2s ease;
-  filter: brightness(1.5) contrast(1.5) saturate(1.8);
+  filter: brightness(1.1) contrast(1.2) saturate(1.2);
 }
 
 .foto img.show {
@@ -81,14 +81,14 @@ button:hover {
 
 @keyframes zoomFadeEpic {
   0% { transform: scale(1); opacity: 0; }
-  100% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1.05); opacity: 1; }
 }
 
 .titulo, .frase {
   position: absolute;
   width: 90%;
   animation: fadeUpPulseEpic 1s ease forwards;
-  text-shadow: 0 0 20px #fff,0 0 40px #ff69b4,0 0 60px #ff1493;
+  text-shadow: 2px 2px 6px #000, 0 0 20px #fff,0 0 40px #ff69b4;
 }
 
 .frase {
@@ -107,32 +107,34 @@ button:hover {
 
 @keyframes fadeUpPulseEpic {
   0% { opacity: 0; transform: translateY(50px) scale(0.9); }
-  50% { transform: translateY(0) scale(1.1); opacity: 1; }
+  50% { transform: translateY(0) scale(1.05); opacity: 1; }
   100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 /* Partículas y corazones */
 .particle {
   position: absolute;
-  font-size: 25px;
+  font-size: 20px;
   pointer-events: none;
   animation: floatUpEpic 3s linear forwards;
+  opacity: 0.7;
 }
 
 @keyframes floatUpEpic {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-120vh) scale(2); opacity: 0; }
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
 }
 
 .corazon {
   position: fixed;
   bottom: -50px;
-  font-size: 4rem;
+  font-size: 3rem;
   animation: subirEpic 2s linear infinite;
-  text-shadow: 0 0 30px #fff, 0 0 60px #ff69b4;
+  text-shadow: 1px 1px 3px #000, 0 0 15px #fff, 0 0 30px #ff69b4;
+  opacity: 0.8;
 }
 
-@keyframes subirEpic { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-110vh) scale(2.2); opacity: 0; } }
+@keyframes subirEpic { from { transform: translateY(0) scale(1); opacity: 0.8; } to { transform: translateY(-110vh) scale(1.8); opacity: 0; } }
 
 #pregunta {
   display:none;
@@ -149,7 +151,7 @@ button:hover {
 #pregunta p {
   font-size:2rem;
   color:#fff;
-  text-shadow:0 0 30px #ff69b4,0 0 60px #ff1493;
+  text-shadow:2px 2px 6px #000,0 0 20px #ff69b4,0 0 40px #ff1493;
   margin:20px;
 }
 
@@ -160,14 +162,14 @@ button:hover {
   background:linear-gradient(45deg,#ff3f6d,#ff9a9e);
   border:none;
   border-radius:25px;
-  box-shadow:0 0 30px #ff69b4,0 0 60px #ff1493;
+  box-shadow:0 0 20px #ff69b4,0 0 40px #ff1493;
   cursor:pointer;
   transition:0.4s;
 }
 
 #pregunta button:hover {
   transform: scale(1.25);
-  box-shadow:0 0 60px #ff69b4,0 0 120px #ff1493;
+  box-shadow:0 0 40px #ff69b4,0 0 80px #ff1493;
 }
 
 </style>
@@ -175,7 +177,7 @@ button:hover {
 <body>
 
 <section id="inicio">
-  <h1>Felices 2 meses mi chiquita linda 💖</h1>
+  <h1>Felices 2 meses princesita de papi 💖</h1>
   <button onclick="iniciarSlider()">Entrar</button>
 </section>
 
@@ -187,10 +189,10 @@ button:hover {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 2.2rem;
-      padding: 25px 50px;
+      font-size: 2rem;
+      padding: 20px 40px;
       z-index: 10;
-      box-shadow: 0 0 40px #ff69b4,0 0 80px #ff1493;
+      box-shadow: 0 0 25px #ff69b4,0 0 50px #ff1493;
     ">Siguiente 💗</button>
   </div>
   <div class="titulo" id="tituloSlider"></div>
@@ -200,7 +202,7 @@ button:hover {
 <section id="pregunta">
   <p id="preguntaTexto"></p>
   <div>
-    <button onclick="responder(true)">Chi 💍</button>
+    <button onclick="responder(true)">CHII 💍</button>
     <button onclick="responder(false)">No 😢</button>
   </div>
 </section>
@@ -210,19 +212,19 @@ const fotos = ["foto1.jpeg","foto2.jpeg","foto3.jpeg","foto4.jpeg","foto5.jpeg",
 "extra1.jpeg","extra2.jpeg"];
 const titulos = [
   "Cuando todo comenzó 💖",
-  "Cuando dormimos juntos en casa 🏡",
+  "Cuando dormimos junto por primera vez 🏡",
   "Día divertido en la plaza 🌳",
-  "Plaza Castelli, otro día perfecto a tu lado 🎠",
+  "Plaza Castelli, otro día genial 🎠",
   "Tus hermosos ojos, perfectos 💘",
   "Momentos mágicos juntos ✨",
   "Recuerdos inolvidables 💞"
 ];
 const frases = [
   "Supe que quería estar con vos para siempre 💗",
-  "Estar juntos así me hizo darme cuenta lo increíble que sos mi chiquita  💝",
+  "Estar juntos así me hizo darme cuenta lo increíble que sos mi reina 💝",
   "Nos divertimos tanto hablando y jugando 💓",
   "Cada día juntos en la plaza me recuerda lo afortunado que soy 💖",
-  "Tu mirada me enamora más cada día, bebé 💞",
+  "Tu mirada me enamora más cada día, princesita 💞",
   "Momentos que quedarán para siempre 💖",
   "Amor puro, felicidad total 💗"
 ];
@@ -255,27 +257,31 @@ function mostrarSlide() {
 
 function generarParticles() {
   setInterval(() => {
-    const particleEmojis = ["💗","💖","💝","💘","💓"];
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    particle.innerHTML = particleEmojis[Math.floor(Math.random()*particleEmojis.length)];
-    particle.style.left = Math.random()*100 + "vw";
-    particle.style.fontSize = (Math.random()*40 + 30) + "px";
-    document.body.appendChild(particle);
-    setTimeout(() => { particle.remove(); }, 3000);
-  }, 80);
+    if(Math.random() < 0.2){ // reduce frecuencia
+      const particleEmojis = ["💗","💖","💝"];
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.innerHTML = particleEmojis[Math.floor(Math.random()*particleEmojis.length)];
+      particle.style.left = Math.random()*100 + "vw";
+      particle.style.fontSize = (Math.random()*30 + 20) + "px";
+      document.body.appendChild(particle);
+      setTimeout(() => { particle.remove(); }, 3000);
+    }
+  }, 200);
 }
 
 setInterval(() => {
-  const coraz = ["💗","💖","💝","💘","💓"];
-  let corazon = document.createElement('div');
-  corazon.innerHTML = coraz[Math.floor(Math.random()*coraz.length)];
-  corazon.classList.add('corazon');
-  corazon.style.left = Math.random() * 100 + "vw";
-  corazon.style.fontSize = (Math.random() * 60 + 35) + "px";
-  document.body.appendChild(corazon);
-  setTimeout(() => { corazon.remove(); }, 3500);
-}, 100);
+  if(Math.random() < 0.2){ // reduce frecuencia
+    const coraz = ["💗","💖","💝"];
+    let corazon = document.createElement('div');
+    corazon.innerHTML = coraz[Math.floor(Math.random()*coraz.length)];
+    corazon.classList.add('corazon');
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (Math.random() * 50 + 30) + "px";
+    document.body.appendChild(corazon);
+    setTimeout(() => { corazon.remove(); }, 3500);
+  }
+}, 250);
 
 function mostrarPregunta() {
   document.getElementById('slider').style.display = 'none';
@@ -288,21 +294,21 @@ function mostrarPregunta() {
 function responder(si) {
   const pregunta = document.getElementById('pregunta');
   if(si) {
-    for(let i=0;i<200;i++){
+    for(let i=0;i<150;i++){
       const cora = document.createElement('div');
-      cora.innerHTML = ["💗","💖","💝","💘","💓"][Math.floor(Math.random()*5)];
+      cora.innerHTML = ["💗","💖","💝"][Math.floor(Math.random()*3)];
       cora.style.position="fixed";
       cora.style.left=Math.random()*100+"vw";
       cora.style.top=Math.random()*100+"vh";
-      cora.style.fontSize=(Math.random()*70+40)+"px";
+      cora.style.fontSize=(Math.random()*60+30)+"px";
       cora.style.animation="floatUpEpic 3s ease forwards";
-      cora.style.textShadow="0 0 25px #fff,0 0 50px #ff69b4";
+      cora.style.textShadow="1px 1px 3px #000,0 0 25px #ff69b4";
       document.body.appendChild(cora);
       setTimeout(()=>{cora.remove()},3500);
     }
-    pregunta.innerHTML = "<h1 style='color:#fff;text-shadow:0 0 30px #ff1493,0 0 60px #ff69b4;font-size:3.5rem;'>¡Sí! 💍  💖</h1>";
+    pregunta.innerHTML = "<h1 style='color:#fff;text-shadow:2px 2px 6px #000,0 0 30px #ff1493,0 0 60px #ff69b4;font-size:3rem;'>¡Sí! 💍 💖</h1>";
   } else {
-    pregunta.innerHTML = "<h1 style='color:#fff;text-shadow:0 0 30px #ff1493,0 0 60px #ff69b4;font-size:3.5rem;'>Tal vez más adelante 😢</h1>";
+    pregunta.innerHTML = "<h1 style='color:#fff;text-shadow:2px 2px 6px #000,0 0 30px #ff1493,0 0 60px #ff69b4;font-size:3rem;'>Tal vez más adelante 😢</h1>";
   }
 }
 </script>
