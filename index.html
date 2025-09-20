@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Felices 2 Meses 💖</title>
+<title>Felices 2 Meses 💖 </title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
@@ -33,7 +33,7 @@ h1 {
   overflow: hidden;
   animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
   color: #ffdde1;
-  text-shadow: 0 0 15px #ff9aa2, 0 0 30px #ff69b4, 0 0 50px #ff1493;
+  text-shadow: 0 0 15px #fff,0 0 30px #ff69b4,0 0 50px #ff1493;
 }
 
 @keyframes typing { from { width: 0; } to { width: 100%; } }
@@ -53,9 +53,8 @@ button {
 }
 
 button:hover {
-  background: linear-gradient(45deg, #ff1493, #ff6ec7);
   transform: scale(1.2);
-  box-shadow: 0 0 40px #ff69b4, 0 0 80px #ff1493;
+  box-shadow: 0 0 40px #ff69b4,0 0 80px #ff1493;
 }
 
 #slider {
@@ -87,7 +86,7 @@ button:hover {
   position: absolute;
   width: 90%;
   animation: fadeUpPulse 1s ease forwards;
-  text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4;
+  text-shadow: 0 0 15px #fff,0 0 30px #ff69b4,0 0 45px #ff1493;
 }
 
 .frase {
@@ -132,6 +131,42 @@ button:hover {
 
 @keyframes subir { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-110vh) scale(2); opacity: 0; } }
 
+#pregunta {
+  display:none;
+  position:absolute;
+  top:0; left:0;
+  width:100vw; height:100vh;
+  background: rgba(255,192,203,0.95);
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+}
+
+#pregunta p {
+  font-size:1.8rem;
+  color:#fff;
+  text-shadow:0 0 20px #ff69b4,0 0 40px #ff1493;
+  margin:20px;
+}
+
+#pregunta button {
+  margin: 15px;
+  padding: 15px 35px;
+  font-size:1.4rem;
+  background:linear-gradient(45deg,#ff3f6d,#ff9a9e);
+  border:none;
+  border-radius:25px;
+  box-shadow:0 0 20px #ff69b4,0 0 40px #ff1493;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+#pregunta button:hover {
+  transform: scale(1.2);
+  box-shadow:0 0 40px #ff69b4,0 0 80px #ff1493;
+}
+
 </style>
 </head>
 <body>
@@ -148,21 +183,34 @@ button:hover {
   <button id="siguienteBtn">Siguiente 💗</button>
 </section>
 
+<section id="pregunta">
+  <p id="preguntaTexto"></p>
+  <div>
+    <button onclick="responder(true)">Chi 💍</button>
+    <button onclick="responder(false)">No 😢</button>
+  </div>
+</section>
+
 <script>
-const fotos = ["foto1.jpeg","foto2.jpeg","foto3.jpeg","foto4.jpeg","foto5.jpeg"];
+const fotos = ["foto1.jpeg","foto2.jpeg","foto3.jpeg","foto4.jpeg","foto5.jpeg",
+"extra1.jpeg","extra2.jpeg"];
 const titulos = [
   "Cuando te pedí que seas mi novia 💖",
   "Cuando te quedaste a dormir en mi casa 🏡",
   "Día divertido en la plaza 🌳",
-  "Plaza Castelli, otro día perfecto con vos 🎠",
-  "Tus hermosos ojos, perfectos 💘"
+  "Plaza Castelli, otro día hermoso a tu lado 🎠",
+  "Tus hermosos ojos, perfectos 💘",
+  "Magia y momentos juntos ✨",
+  "Recuerdos inolvidables 💞"
 ];
 const frases = [
   "Supe que quería estar con vos para siempre 💗",
-  "Estar juntos así me hizo darme cuenta lo increíble que sos mi princesita hermosa 💝",
+  "Estar juntos así me hizo darme cuenta lo increíble que sos 💝",
   "Nos divertimos tanto hablando y jugando 💓",
   "Cada día juntos en la plaza me recuerda lo afortunado que soy 💖",
-  "Tu mirada me enamora más cada día, me pierdo en tu mirada perfecta 💞"
+  "Tu mirada me enamora más cada día, princesa 💞",
+  "Momentos que quedarán para siempre 💖",
+  "Amor puro, felicidad total 💗"
 ];
 
 let index = 0;
@@ -183,8 +231,8 @@ function mostrarSlide() {
   document.getElementById('tituloSlider').textContent = titulos[index];
   if(index === fotos.length - 1) {
     const btn = document.getElementById('siguienteBtn');
-    btn.textContent = "💞 Fin 💞";
-    btn.disabled = true;
+    btn.textContent = "Te tengo una pregunta 💖";
+    btn.onclick = mostrarPregunta;
   }
 }
 
@@ -206,7 +254,6 @@ function generarParticles() {
   }, 100);
 }
 
-// Corazones flotando
 setInterval(() => {
   const coraz = ["💗","💖","💝","💘","💓"];
   let corazon = document.createElement('div');
@@ -217,6 +264,37 @@ setInterval(() => {
   document.body.appendChild(corazon);
   setTimeout(() => { corazon.remove(); }, 3500);
 }, 150);
+
+// Propuesta
+function mostrarPregunta() {
+  document.getElementById('slider').style.display = 'none';
+  const pregunta = document.getElementById('pregunta');
+  pregunta.style.display = 'flex';
+  document.getElementById('preguntaTexto').textContent = 
+  "Tal vez es muy pronto, no lo sé, tal vez soy joven, pero sé que quiero pasar toda mi vida con vos. Constanza, ¿te casarías conmigo?";
+}
+
+function responder(si) {
+  const pregunta = document.getElementById('pregunta');
+  if(si) {
+    // Explosiones y partículas hermosas
+    for(let i=0;i<100;i++){
+      const cora = document.createElement('div');
+      cora.innerHTML = ["💗","💖","💝","💘","💓"][Math.floor(Math.random()*5)];
+      cora.style.position="fixed";
+      cora.style.left=Math.random()*100+"vw";
+      cora.style.top=Math.random()*100+"vh";
+      cora.style.fontSize=(Math.random()*50+30)+"px";
+      cora.style.animation="floatUp 3s ease forwards";
+      cora.style.textShadow="0 0 20px #fff,0 0 40px #ff69b4";
+      document.body.appendChild(cora);
+      setTimeout(()=>{cora.remove()},3000);
+    }
+    pregunta.innerHTML = "<h1 style='color:#fff;text-shadow:0 0 25px #ff1493,0 0 50px #ff69b4;font-size:3rem;'>¡Sí! 💍 Te casas conmigo 💖</h1>";
+  } else {
+    pregunta.innerHTML = "<h1 style='color:#fff;text-shadow:0 0 25px #ff1493,0 0 50px #ff69b4;font-size:3rem;'>Tal vez más adelante 😢</h1>";
+  }
+}
 
 </script>
 
