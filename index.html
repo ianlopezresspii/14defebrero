@@ -16,6 +16,7 @@ body {
   position: relative;
 }
 
+/* Pantalla inicial */
 #inicio {
   height: 100vh;
   display: flex;
@@ -33,7 +34,7 @@ h1 {
   overflow: hidden;
   animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
   color: #ffdde1;
-  text-shadow: 0 0 15px #fff,0 0 30px #ff69b4,0 0 50px #ff1493;
+  text-shadow: 0 0 20px #fff,0 0 40px #ff69b4,0 0 60px #ff1493;
 }
 
 @keyframes typing { from { width: 0; } to { width: 100%; } }
@@ -41,20 +42,20 @@ h1 {
 
 button {
   margin-top: 25px;
-  padding: 18px 36px;
-  font-size: 1.5rem;
+  padding: 20px 50px;
+  font-size: 1.7rem;
   border: none;
   border-radius: 30px;
   background: linear-gradient(45deg, #ff3f6d, #ff9a9e);
   color: #fff;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
+  transition: 0.4s;
+  box-shadow: 0 0 25px #ff69b4, 0 0 50px #ff1493;
 }
 
 button:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 40px #ff69b4,0 0 80px #ff1493;
+  transform: scale(1.25);
+  box-shadow: 0 0 50px #ff69b4,0 0 100px #ff1493;
 }
 
 /* Slider */
@@ -70,67 +71,68 @@ button:hover {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  transition: transform 1.5s ease, filter 1.5s ease;
-  filter: brightness(1.3) contrast(1.3) saturate(1.7);
+  transition: transform 2s ease, filter 2s ease;
+  filter: brightness(1.5) contrast(1.5) saturate(1.8);
 }
 
 .foto img.show {
-  animation: zoomFade 1s ease forwards;
+  animation: zoomFadeEpic 1.2s ease forwards;
 }
 
-@keyframes zoomFade {
+@keyframes zoomFadeEpic {
   0% { transform: scale(1); opacity: 0; }
-  100% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1.1); opacity: 1; }
 }
 
 .titulo, .frase {
   position: absolute;
   width: 90%;
-  animation: fadeUpPulse 1s ease forwards;
-  text-shadow: 0 0 15px #fff,0 0 30px #ff69b4,0 0 45px #ff1493;
+  animation: fadeUpPulseEpic 1s ease forwards;
+  text-shadow: 0 0 20px #fff,0 0 40px #ff69b4,0 0 60px #ff1493;
 }
 
 .frase {
   bottom: 15%;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #ffe6f0;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .titulo {
   top: 10%;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: #ffb6c1;
 }
 
-@keyframes fadeUpPulse {
-  0% { opacity: 0; transform: translateY(30px) scale(0.95); }
-  50% { transform: translateY(0) scale(1.05); opacity: 1; }
+@keyframes fadeUpPulseEpic {
+  0% { opacity: 0; transform: translateY(50px) scale(0.9); }
+  50% { transform: translateY(0) scale(1.1); opacity: 1; }
   100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
+/* Partículas y corazones */
 .particle {
   position: absolute;
-  font-size: 20px;
+  font-size: 25px;
   pointer-events: none;
-  animation: floatUp 3s linear forwards;
+  animation: floatUpEpic 3s linear forwards;
 }
 
-@keyframes floatUp {
+@keyframes floatUpEpic {
   0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+  100% { transform: translateY(-120vh) scale(2); opacity: 0; }
 }
 
 .corazon {
   position: fixed;
   bottom: -50px;
-  font-size: 3.5rem;
-  animation: subir 2s linear infinite;
-  text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4;
+  font-size: 4rem;
+  animation: subirEpic 2s linear infinite;
+  text-shadow: 0 0 30px #fff, 0 0 60px #ff69b4;
 }
 
-@keyframes subir { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-110vh) scale(2); opacity: 0; } }
+@keyframes subirEpic { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-110vh) scale(2.2); opacity: 0; } }
 
 #pregunta {
   display:none;
@@ -145,27 +147,27 @@ button:hover {
 }
 
 #pregunta p {
-  font-size:1.8rem;
+  font-size:2rem;
   color:#fff;
-  text-shadow:0 0 20px #ff69b4,0 0 40px #ff1493;
+  text-shadow:0 0 30px #ff69b4,0 0 60px #ff1493;
   margin:20px;
 }
 
 #pregunta button {
-  margin: 15px;
-  padding: 15px 35px;
-  font-size:1.4rem;
+  margin: 20px;
+  padding: 18px 45px;
+  font-size:1.6rem;
   background:linear-gradient(45deg,#ff3f6d,#ff9a9e);
   border:none;
   border-radius:25px;
-  box-shadow:0 0 20px #ff69b4,0 0 40px #ff1493;
+  box-shadow:0 0 30px #ff69b4,0 0 60px #ff1493;
   cursor:pointer;
-  transition:0.3s;
+  transition:0.4s;
 }
 
 #pregunta button:hover {
-  transform: scale(1.2);
-  box-shadow:0 0 40px #ff69b4,0 0 80px #ff1493;
+  transform: scale(1.25);
+  box-shadow:0 0 60px #ff69b4,0 0 120px #ff1493;
 }
 
 </style>
@@ -173,23 +175,22 @@ button:hover {
 <body>
 
 <section id="inicio">
-  <h1>Felices 2 meses amor de mi vida 💖</h1>
+  <h1>Felices 2 meses mi chiquita linda 💖</h1>
   <button onclick="iniciarSlider()">Entrar</button>
 </section>
 
 <section id="slider">
   <div class="foto">
     <img id="imagenSlider" src="" alt="Foto">
-    <!-- Botón centrado -->
     <button id="siguienteBtn" style="
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 2rem;
-      padding: 20px 40px;
+      font-size: 2.2rem;
+      padding: 25px 50px;
       z-index: 10;
-      box-shadow: 0 0 30px #ff69b4,0 0 60px #ff1493;
+      box-shadow: 0 0 40px #ff69b4,0 0 80px #ff1493;
     ">Siguiente 💗</button>
   </div>
   <div class="titulo" id="tituloSlider"></div>
@@ -199,7 +200,7 @@ button:hover {
 <section id="pregunta">
   <p id="preguntaTexto"></p>
   <div>
-    <button onclick="responder(true)">Sí 💍</button>
+    <button onclick="responder(true)">Chi 💍</button>
     <button onclick="responder(false)">No 😢</button>
   </div>
 </section>
@@ -208,17 +209,17 @@ button:hover {
 const fotos = ["foto1.jpeg","foto2.jpeg","foto3.jpeg","foto4.jpeg","foto5.jpeg",
 "extra1.jpeg","extra2.jpeg"];
 const titulos = [
-  "Cuando todo comenzó.. 💖",
-  "Cuando te quedaste a dormir en mi casa 🏡",
+  "Cuando todo comenzó 💖",
+  "Cuando dormimos juntos en casa 🏡",
   "Día divertido en la plaza 🌳",
-  "Plaza Castelli, otro día hermosa 🎠",
+  "Plaza Castelli, otro día perfecto a tu lado 🎠",
   "Tus hermosos ojos, perfectos 💘",
-  "Magia y momentos juntos ✨",
+  "Momentos mágicos juntos ✨",
   "Recuerdos inolvidables 💞"
 ];
 const frases = [
   "Supe que quería estar con vos para siempre 💗",
-  "Estar juntos así me hizo darme cuenta lo increíble que sos mi chiquita linda 💝",
+  "Estar juntos así me hizo darme cuenta lo increíble que sos mi chiquita  💝",
   "Nos divertimos tanto hablando y jugando 💓",
   "Cada día juntos en la plaza me recuerda lo afortunado que soy 💖",
   "Tu mirada me enamora más cada día, bebé 💞",
@@ -259,10 +260,10 @@ function generarParticles() {
     particle.classList.add('particle');
     particle.innerHTML = particleEmojis[Math.floor(Math.random()*particleEmojis.length)];
     particle.style.left = Math.random()*100 + "vw";
-    particle.style.fontSize = (Math.random()*30 + 20) + "px";
+    particle.style.fontSize = (Math.random()*40 + 30) + "px";
     document.body.appendChild(particle);
     setTimeout(() => { particle.remove(); }, 3000);
-  }, 100);
+  }, 80);
 }
 
 setInterval(() => {
@@ -271,12 +272,11 @@ setInterval(() => {
   corazon.innerHTML = coraz[Math.floor(Math.random()*coraz.length)];
   corazon.classList.add('corazon');
   corazon.style.left = Math.random() * 100 + "vw";
-  corazon.style.fontSize = (Math.random() * 40 + 25) + "px";
+  corazon.style.fontSize = (Math.random() * 60 + 35) + "px";
   document.body.appendChild(corazon);
   setTimeout(() => { corazon.remove(); }, 3500);
-}, 150);
+}, 100);
 
-// Propuesta
 function mostrarPregunta() {
   document.getElementById('slider').style.display = 'none';
   const pregunta = document.getElementById('pregunta');
@@ -288,24 +288,23 @@ function mostrarPregunta() {
 function responder(si) {
   const pregunta = document.getElementById('pregunta');
   if(si) {
-    for(let i=0;i<100;i++){
+    for(let i=0;i<200;i++){
       const cora = document.createElement('div');
       cora.innerHTML = ["💗","💖","💝","💘","💓"][Math.floor(Math.random()*5)];
       cora.style.position="fixed";
       cora.style.left=Math.random()*100+"vw";
       cora.style.top=Math.random()*100+"vh";
-      cora.style.fontSize=(Math.random()*50+30)+"px";
-      cora.style.animation="floatUp 3s ease forwards";
-      cora.style.textShadow="0 0 20px #fff,0 0 40px #ff69b4";
+      cora.style.fontSize=(Math.random()*70+40)+"px";
+      cora.style.animation="floatUpEpic 3s ease forwards";
+      cora.style.textShadow="0 0 25px #fff,0 0 50px #ff69b4";
       document.body.appendChild(cora);
-      setTimeout(()=>{cora.remove()},3000);
+      setTimeout(()=>{cora.remove()},3500);
     }
-    pregunta.innerHTML = "<h1 style='color:#fff;text-shadow:0 0 25px #ff1493,0 0 50px #ff69b4;font-size:3rem;'>¡Sí! 💍 Te casas conmigo 💖</h1>";
+    pregunta.innerHTML = "<h1 style='color:#fff;text-shadow:0 0 30px #ff1493,0 0 60px #ff69b4;font-size:3.5rem;'>¡Sí! 💍  💖</h1>";
   } else {
-    pregunta.innerHTML = "<h1 style='color:#fff;text-shadow:0 0 25px #ff1493,0 0 50px #ff69b4;font-size:3rem;'>Tal vez más adelante 😢</h1>";
+    pregunta.innerHTML = "<h1 style='color:#fff;text-shadow:0 0 30px #ff1493,0 0 60px #ff69b4;font-size:3.5rem;'>Tal vez más adelante 😢</h1>";
   }
 }
-
 </script>
 
 </body>
