@@ -15,7 +15,6 @@
     position: relative;
   }
 
-  /* Pantalla inicial */
   #inicio {
     height: 100vh;
     display: flex;
@@ -35,14 +34,8 @@
     text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4, 0 0 80px #ff1493;
   }
 
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-  @keyframes blink {
-    50% { border-color: transparent; }
-  }
+  @keyframes typing { from { width: 0; } to { width: 100%; } }
+  @keyframes blink { 50% { border-color: transparent; } }
 
   button {
     margin-top: 30px;
@@ -63,30 +56,21 @@
     box-shadow: 0 0 40px #ff69b4, 0 0 80px #ff1493;
   }
 
-  /* Galería */
-  #galeria {
+  #slider {
     display: none;
     padding: 20px;
     animation: fadeIn 2s ease;
   }
 
-  .foto {
-    margin: 20px;
-    border-radius: 25px;
-    overflow: hidden;
-    display: inline-block;
-    box-shadow: 0 0 25px rgba(255,0,128,0.6), 0 0 50px rgba(255,0,128,0.4);
-    transition: transform 0.5s, box-shadow 0.5s;
-  }
-
   .foto img {
     width: 280px;
     border-radius: 25px;
-    transition: transform 0.5s, filter 0.5s;
+    box-shadow: 0 0 25px rgba(255,0,128,0.6), 0 0 50px rgba(255,0,128,0.4);
     filter: brightness(1.3) contrast(1.3) saturate(1.7);
+    transition: transform 0.5s, filter 0.5s;
   }
 
-  .foto:hover img {
+  .foto img:hover {
     transform: scale(1.25) rotate(-3deg);
     filter: brightness(1.6) contrast(1.5) saturate(2);
     box-shadow: 0 0 60px #ff69b4, 0 0 120px #ff1493;
@@ -107,7 +91,6 @@
   .corazon {
     position: fixed;
     bottom: -50px;
-    color: #ffdde1;
     font-size: 3rem;
     animation: subir 3s linear infinite;
     text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4;
@@ -115,53 +98,65 @@
 
   @keyframes subir { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-110vh) scale(2); opacity: 0; } }
 
-  /* Corazón central latiendo */
-  #corazonCentral {
-    font-size: 6rem;
-    color: #ff1493;
-    text-shadow: 0 0 40px #ff69b4, 0 0 80px #ff1493, 0 0 120px #ffb6c1;
-    animation: latido 1s infinite;
-    margin-top: 20px;
-  }
-
-  @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
 </style>
 </head>
 <body>
 
 <section id="inicio">
   <h1>Felices 2 meses mi chiquita linda 💖</h1>
-  <button onclick="mostrarGaleria()">Entrar</button>
+  <button onclick="iniciarSlider()">Entrar</button>
 </section>
 
-<section id="galeria">
-  <div class="frase">Cada día a tu lado es un regalo ✨</div>
-  <div class="foto"><img src="foto1.jpeg" alt="Foto 1"></div>
-  <div class="foto"><img src="foto2.jpeg" alt="Foto 2"></div>
-  <div class="foto"><img src="foto3.jpeg" alt="Foto 3"></div>
-  <div class="foto"><img src="foto4.jpeg" alt="Foto 4"></div>
-  <div class="foto"><img src="foto5.jpeg" alt="Foto 5"></div>
-  <div class="frase">Gracias por hacerme tan feliz 💕</div>
-  <div id="corazonCentral">💖</div>
-  <div class="frase">Por muchos meses más juntos, mi amor 💞</div>
+<section id="slider">
+  <div class="foto"><img id="imagenSlider" src="" alt="Foto"></div>
+  <div class="frase" id="fraseSlider"></div>
+  <button id="siguienteBtn">Siguiente 💗</button>
 </section>
 
 <script>
-function mostrarGaleria() {
+const fotos = ["foto1.jpeg", "foto2.jpeg", "foto3.jpeg", "foto4.jpeg", "foto5.jpeg"];
+const frases = [
+  "Cada día a tu lado es un regalo 💖",
+  "Gracias por hacerme tan feliz 💗",
+  "Tu sonrisa ilumina mi mundo 💝",
+  "A tu lado todo es perfecto 💘",
+  "Por muchos meses más juntos mi amor 💓"
+];
+
+let index = 0;
+
+function iniciarSlider() {
   document.getElementById('inicio').style.display = 'none';
-  document.getElementById('galeria').style.display = 'block';
+  document.getElementById('slider').style.display = 'block';
+  mostrarSlide();
 }
+
+function mostrarSlide() {
+  document.getElementById('imagenSlider').src = fotos[index];
+  document.getElementById('fraseSlider').textContent = frases[index];
+  if(index === fotos.length - 1) {
+    document.getElementById('siguienteBtn').textContent = "💞 Fin 💞";
+    document.getElementById('siguienteBtn').disabled = true;
+  }
+}
+
+document.getElementById('siguienteBtn').addEventListener('click', () => {
+  index++;
+  if(index < fotos.length) mostrarSlide();
+});
 
 // Corazones flotando
 setInterval(() => {
+  const coraz = ["💗","💖","💝","💘","💓"];
   let corazon = document.createElement('div');
-  corazon.innerHTML = "💖"; // emoji estilo iOS
+  corazon.innerHTML = coraz[Math.floor(Math.random()*coraz.length)];
   corazon.classList.add('corazon');
   corazon.style.left = Math.random() * 100 + "vw";
   corazon.style.fontSize = (Math.random() * 35 + 25) + "px";
   document.body.appendChild(corazon);
   setTimeout(() => { corazon.remove(); }, 3000);
 }, 250);
+
 </script>
 
 </body>
