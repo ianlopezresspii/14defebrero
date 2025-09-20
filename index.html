@@ -57,6 +57,7 @@ button:hover {
   box-shadow: 0 0 40px #ff69b4,0 0 80px #ff1493;
 }
 
+/* Slider */
 #slider {
   display: none;
   height: 100vh;
@@ -91,7 +92,7 @@ button:hover {
 
 .frase {
   bottom: 15%;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #ffe6f0;
   line-height: 1.4;
 }
@@ -172,21 +173,33 @@ button:hover {
 <body>
 
 <section id="inicio">
-  <h1>Felices 2 meses mi chiquita linda 💖</h1>
+  <h1>Felices 2 meses amor de mi vida 💖</h1>
   <button onclick="iniciarSlider()">Entrar</button>
 </section>
 
 <section id="slider">
-  <div class="foto"><img id="imagenSlider" src="" alt="Foto"></div>
+  <div class="foto">
+    <img id="imagenSlider" src="" alt="Foto">
+    <!-- Botón centrado -->
+    <button id="siguienteBtn" style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      padding: 20px 40px;
+      z-index: 10;
+      box-shadow: 0 0 30px #ff69b4,0 0 60px #ff1493;
+    ">Siguiente 💗</button>
+  </div>
   <div class="titulo" id="tituloSlider"></div>
   <div class="frase" id="fraseSlider"></div>
-  <button id="siguienteBtn">Siguiente 💗</button>
 </section>
 
 <section id="pregunta">
   <p id="preguntaTexto"></p>
   <div>
-    <button onclick="responder(true)">Chi 💍</button>
+    <button onclick="responder(true)">Sí 💍</button>
     <button onclick="responder(false)">No 😢</button>
   </div>
 </section>
@@ -195,20 +208,20 @@ button:hover {
 const fotos = ["foto1.jpeg","foto2.jpeg","foto3.jpeg","foto4.jpeg","foto5.jpeg",
 "extra1.jpeg","extra2.jpeg"];
 const titulos = [
-  "Cuando te pedí que seas mi novia 💖",
+  "Cuando todo comenzó.. 💖",
   "Cuando te quedaste a dormir en mi casa 🏡",
   "Día divertido en la plaza 🌳",
-  "Plaza Castelli, otro día hermoso a tu lado 🎠",
+  "Plaza Castelli, otro día hermosa 🎠",
   "Tus hermosos ojos, perfectos 💘",
   "Magia y momentos juntos ✨",
   "Recuerdos inolvidables 💞"
 ];
 const frases = [
   "Supe que quería estar con vos para siempre 💗",
-  "Estar juntos así me hizo darme cuenta lo increíble que sos 💝",
+  "Estar juntos así me hizo darme cuenta lo increíble que sos mi chiquita linda 💝",
   "Nos divertimos tanto hablando y jugando 💓",
   "Cada día juntos en la plaza me recuerda lo afortunado que soy 💖",
-  "Tu mirada me enamora más cada día, princesa 💞",
+  "Tu mirada me enamora más cada día, bebé 💞",
   "Momentos que quedarán para siempre 💖",
   "Amor puro, felicidad total 💗"
 ];
@@ -229,17 +242,15 @@ function mostrarSlide() {
   img.onload = () => img.classList.add('show'); 
   document.getElementById('fraseSlider').textContent = frases[index];
   document.getElementById('tituloSlider').textContent = titulos[index];
+  const btn = document.getElementById('siguienteBtn');
   if(index === fotos.length - 1) {
-    const btn = document.getElementById('siguienteBtn');
     btn.textContent = "Te tengo una pregunta 💖";
     btn.onclick = mostrarPregunta;
+  } else {
+    btn.textContent = "Siguiente 💗";
+    btn.onclick = () => { index++; mostrarSlide(); };
   }
 }
-
-document.getElementById('siguienteBtn').addEventListener('click', () => {
-  index++;
-  if(index < fotos.length) mostrarSlide();
-});
 
 function generarParticles() {
   setInterval(() => {
@@ -277,7 +288,6 @@ function mostrarPregunta() {
 function responder(si) {
   const pregunta = document.getElementById('pregunta');
   if(si) {
-    // Explosiones y partículas hermosas
     for(let i=0;i<100;i++){
       const cora = document.createElement('div');
       cora.innerHTML = ["💗","💖","💝","💘","💓"][Math.floor(Math.random()*5)];
