@@ -1,165 +1,168 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Felices 2 Meses 💖</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ff6ec7, #ffc6ff);
-      overflow-x: hidden;
-      color: #fff;
-      text-align: center;
-      position: relative;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Felices 2 Meses 💖</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff6ec7, #ffc6ff);
+    overflow-x: hidden;
+    color: #fff;
+    text-align: center;
+    position: relative;
+  }
 
-    #inicio {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 2s ease;
-    }
+  /* Pantalla inicial */
+  #inicio {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 2s ease;
+  }
 
-    h1 {
-      font-size: 3rem;
-      white-space: nowrap;
-      border-right: 4px solid #fff;
-      width: 0;
-      overflow: hidden;
-      animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
-      text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4, 0 0 60px #ff1493;
-    }
+  h1 {
+    font-size: 3rem;
+    white-space: nowrap;
+    border-right: 4px solid #fff;
+    width: 0;
+    overflow: hidden;
+    animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
+    text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4, 0 0 80px #ff1493;
+  }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
 
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
 
-    button {
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 1.5rem;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(45deg, #ff3f6d, #ff9a9e);
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
-    }
+  button {
+    margin-top: 30px;
+    padding: 15px 35px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff3f6d, #ff9a9e);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 25px #ff69b4, 0 0 50px #ff1493;
+  }
 
-    button:hover {
-      background: linear-gradient(45deg, #ff1493, #ff6ec7);
-      transform: scale(1.1);
-      box-shadow: 0 0 30px #ff69b4, 0 0 60px #ff1493;
-    }
+  button:hover {
+    background: linear-gradient(45deg, #ff1493, #ff6ec7);
+    transform: scale(1.15);
+    box-shadow: 0 0 40px #ff69b4, 0 0 80px #ff1493;
+  }
 
-    #galeria {
-      display: none;
-      padding: 20px;
-      animation: fadeIn 2s ease;
-    }
+  /* Galería */
+  #galeria {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 2s ease;
+  }
 
-    .foto {
-      margin: 15px;
-      border-radius: 20px;
-      overflow: hidden;
-      display: inline-block;
-      box-shadow: 0 0 20px rgba(255,0,128,0.5), 0 0 40px rgba(255,0,128,0.3);
-      transition: transform 0.5s, box-shadow 0.5s;
-    }
+  .foto {
+    margin: 20px;
+    border-radius: 25px;
+    overflow: hidden;
+    display: inline-block;
+    box-shadow: 0 0 25px rgba(255,0,128,0.6), 0 0 50px rgba(255,0,128,0.4);
+    transition: transform 0.5s, box-shadow 0.5s;
+  }
 
-    .foto img {
-      width: 250px;
-      border-radius: 20px;
-      transition: transform 0.5s, filter 0.5s;
-      filter: brightness(1.2) contrast(1.2) saturate(1.5);
-    }
+  .foto img {
+    width: 280px;
+    border-radius: 25px;
+    transition: transform 0.5s, filter 0.5s;
+    filter: brightness(1.3) contrast(1.3) saturate(1.7);
+  }
 
-    .foto:hover img {
-      transform: scale(1.2) rotate(-2deg);
-      filter: brightness(1.5) contrast(1.4) saturate(1.8);
-      box-shadow: 0 0 50px #ff69b4, 0 0 100px #ff1493;
-    }
+  .foto:hover img {
+    transform: scale(1.25) rotate(-3deg);
+    filter: brightness(1.6) contrast(1.5) saturate(2);
+    box-shadow: 0 0 60px #ff69b4, 0 0 120px #ff1493;
+  }
 
-    .frase {
-      font-size: 1.5rem;
-      margin: 25px 0;
-      animation: fadeInUp 2s ease, pulse 1.5s infinite;
-      text-shadow: 0 0 15px #fff, 0 0 25px #ff69b4;
-    }
+  .frase {
+    font-size: 1.7rem;
+    margin: 30px 0;
+    animation: fadeInUp 2s ease, pulse 1.5s infinite;
+    text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4;
+  }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
-    .corazon {
-      position: fixed;
-      bottom: -50px;
-      color: #ffdde1;
-      font-size: 2.5rem;
-      animation: subir 3s linear infinite;
-      text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4;
-    }
+  /* Corazones flotando */
+  .corazon {
+    position: fixed;
+    bottom: -50px;
+    color: #ffdde1;
+    font-size: 3rem;
+    animation: subir 3s linear infinite;
+    text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4;
+  }
 
-    @keyframes subir { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-110vh) scale(2); opacity: 0; } }
+  @keyframes subir { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-110vh) scale(2); opacity: 0; } }
 
-    #corazonCentral {
-      font-size: 5rem;
-      color: #ff1493;
-      text-shadow: 0 0 30px #ff69b4, 0 0 60px #ff1493, 0 0 90px #ffb6c1;
-      animation: latido 1s infinite;
-      margin-top: 20px;
-    }
+  /* Corazón central latiendo */
+  #corazonCentral {
+    font-size: 6rem;
+    color: #ff1493;
+    text-shadow: 0 0 40px #ff69b4, 0 0 80px #ff1493, 0 0 120px #ffb6c1;
+    animation: latido 1s infinite;
+    margin-top: 20px;
+  }
 
-    @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
-
-  </style>
+  @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+</style>
 </head>
 <body>
 
-  <section id="inicio">
-    <h1>Felices 2 meses mi chiquita linda 💖</h1>
-    <button onclick="mostrarGaleria()">Entrar</button>
-  </section>
+<section id="inicio">
+  <h1>Felices 2 meses mi chiquita linda 💖</h1>
+  <button onclick="mostrarGaleria()">Entrar</button>
+</section>
 
-  <section id="galeria">
-    <div class="frase">Cada día a tu lado es un regalo ✨</div>
-    <div class="foto"><img src="foto1.jpeg"></div>
-    <div class="foto"><img src="foto2.jpeg"></div>
-    <div class="foto"><img src="foto3.jpeg"></div>
-    <div class="foto"><img src="foto4.jpeg"></div>
-    <div class="foto"><img src="foto5.jpeg"></div>
-    <div class="frase">Gracias por hacerme tan feliz 💕</div>
-    <div id="corazonCentral">💖</div>
-    <div class="frase">Por muchos meses más juntos, mi amor 💞</div>
-  </section>
+<section id="galeria">
+  <div class="frase">Cada día a tu lado es un regalo ✨</div>
+  <div class="foto"><img src="foto1.jpeg" alt="Foto 1"></div>
+  <div class="foto"><img src="foto2.jpeg" alt="Foto 2"></div>
+  <div class="foto"><img src="foto3.jpeg" alt="Foto 3"></div>
+  <div class="foto"><img src="foto4.jpeg" alt="Foto 4"></div>
+  <div class="foto"><img src="foto5.jpeg" alt="Foto 5"></div>
+  <div class="frase">Gracias por hacerme tan feliz 💕</div>
+  <div id="corazonCentral">💖</div>
+  <div class="frase">Por muchos meses más juntos, mi amor 💞</div>
+</section>
 
-  <script>
-    function mostrarGaleria() {
-      document.getElementById('inicio').style.display = 'none';
-      document.getElementById('galeria').style.display = 'block';
-    }
+<script>
+function mostrarGaleria() {
+  document.getElementById('inicio').style.display = 'none';
+  document.getElementById('galeria').style.display = 'block';
+}
 
-    setInterval(() => {
-      let corazon = document.createElement('div');
-      corazon.innerHTML = "💖";
-      corazon.classList.add('corazon');
-      corazon.style.left = Math.random() * 100 + "vw";
-      corazon.style.fontSize = (Math.random() * 30 + 25) + "px";
-      document.body.appendChild(corazon);
-
-      setTimeout(() => { corazon.remove(); }, 3000);
-    }, 300);
-  </script>
+// Corazones flotando
+setInterval(() => {
+  let corazon = document.createElement('div');
+  corazon.innerHTML = "💖"; // emoji estilo iOS
+  corazon.classList.add('corazon');
+  corazon.style.left = Math.random() * 100 + "vw";
+  corazon.style.fontSize = (Math.random() * 35 + 25) + "px";
+  document.body.appendChild(corazon);
+  setTimeout(() => { corazon.remove(); }, 3000);
+}, 250);
+</script>
 
 </body>
 </html>
