@@ -8,10 +8,11 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background: linear-gradient(135deg, #ff6ec7, #ffc6ff);
       overflow-x: hidden;
       color: #fff;
       text-align: center;
+      position: relative;
     }
 
     /* Pantalla inicial */
@@ -25,12 +26,13 @@
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       white-space: nowrap;
       border-right: 4px solid #fff;
       width: 0;
       overflow: hidden;
       animation: typing 4s steps(30) forwards, blink 0.75s step-end infinite;
+      text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4, 0 0 60px #ff1493;
     }
 
     @keyframes typing {
@@ -43,19 +45,22 @@
     }
 
     button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 1.2rem;
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.5rem;
       border: none;
       border-radius: 25px;
-      background: #ff6f91;
+      background: linear-gradient(45deg, #ff3f6d, #ff9a9e);
       color: white;
       cursor: pointer;
       transition: 0.3s;
+      box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
     }
 
     button:hover {
-      background: #ff3f6d;
+      background: linear-gradient(45deg, #ff1493, #ff6ec7);
+      transform: scale(1.1);
+      box-shadow: 0 0 30px #ff69b4, 0 0 60px #ff1493;
     }
 
     /* Galería */
@@ -66,27 +71,32 @@
     }
 
     .foto {
-      margin: 10px;
-      border-radius: 15px;
+      margin: 15px;
+      border-radius: 20px;
       overflow: hidden;
       display: inline-block;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
+      box-shadow: 0 0 20px rgba(255,0,128,0.5), 0 0 40px rgba(255,0,128,0.3);
+      transition: transform 0.5s, box-shadow 0.5s;
     }
 
     .foto img {
       width: 250px;
-      border-radius: 15px;
+      border-radius: 20px;
+      transition: transform 0.5s, filter 0.5s;
+      filter: brightness(1.2) contrast(1.2) saturate(1.5);
     }
 
-    .foto:hover {
-      transform: scale(1.1);
+    .foto:hover img {
+      transform: scale(1.2) rotate(-2deg);
+      filter: brightness(1.5) contrast(1.4) saturate(1.8);
+      box-shadow: 0 0 50px #ff69b4, 0 0 100px #ff1493;
     }
 
     .frase {
-      font-size: 1.3rem;
-      margin: 20px 0;
-      animation: fadeInUp 2s ease;
+      font-size: 1.5rem;
+      margin: 25px 0;
+      animation: fadeInUp 2s ease, pulse 1.5s infinite;
+      text-shadow: 0 0 15px #fff, 0 0 25px #ff69b4;
     }
 
     @keyframes fadeIn {
@@ -95,8 +105,13 @@
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     /* Corazones flotando */
@@ -104,14 +119,30 @@
       position: fixed;
       bottom: -50px;
       color: #ffdde1;
-      font-size: 2rem;
-      animation: subir 6s linear infinite;
+      font-size: 2.5rem;
+      animation: subir 3s linear infinite;
+      text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4;
     }
 
     @keyframes subir {
       from { transform: translateY(0) scale(1); opacity: 1; }
-      to { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+      to { transform: translateY(-110vh) scale(2); opacity: 0; }
     }
+
+    /* Corazón central latiendo */
+    #corazonCentral {
+      font-size: 5rem;
+      color: #ff1493;
+      text-shadow: 0 0 30px #ff69b4, 0 0 60px #ff1493, 0 0 90px #ffb6c1;
+      animation: latido 1s infinite;
+      margin-top: 20px;
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
   </style>
 </head>
 <body>
@@ -131,6 +162,8 @@
     <div class="frase">Gracias por hacerme tan feliz 💕</div>
     <div class="foto"><img src="foto4.jpg"></div>
     <div class="foto"><img src="foto5.jpg"></div>
+    <div id="corazonCentral">💖</div>
+    <div class="frase">Por muchos meses más juntos, mi amor 💞</div>
   </section>
 
   <!-- Corazones flotando -->
@@ -146,13 +179,13 @@
       corazon.innerHTML = "💖";
       corazon.classList.add('corazon');
       corazon.style.left = Math.random() * 100 + "vw";
-      corazon.style.fontSize = (Math.random() * 20 + 20) + "px";
+      corazon.style.fontSize = (Math.random() * 30 + 25) + "px";
       document.body.appendChild(corazon);
 
       setTimeout(() => {
         corazon.remove();
-      }, 6000);
-    }, 500);
+      }, 3000);
+    }, 300);
   </script>
 </body>
 </html>
